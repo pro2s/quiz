@@ -16,6 +16,11 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+quizStore = require('./stores/quiz');
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        privateState: {},
+        sharedState: quizStore.state
+    }
 });
