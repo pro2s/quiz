@@ -4,9 +4,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import Vue from 'vue';
+import Router from 'vue-router';
+import router from './router';
+import BootstrapVue from 'bootstrap-vue';
+import quizStore from './stores/quiz';
 
-window.Vue = require('vue');
+Vue.use(Router);
+Vue.use(BootstrapVue);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,9 +21,9 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-quizStore = require('./stores/quiz');
 const app = new Vue({
     el: '#app',
+    router,
     data: {
         privateState: {},
         sharedState: quizStore.state

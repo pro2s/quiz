@@ -1,4 +1,4 @@
-module.exports = {
+const quizStore = {
     debug: true,
     state: {
         message: "Привет!"
@@ -12,3 +12,5 @@ module.exports = {
         this.state.message = "";
     }
 };
+
+export default quizStore;
