@@ -11,14 +11,9 @@
                     style="max-width: 20rem;"
                     class="mb-2">
                         <p class="card-text">
-                            Some quick example text to build on the card title and make up the bulk of the card's content.
+                            ome quick example text to build on the card title and make up the bulk of the card's content.
                         </p>
-                    <router-link :to="{name: 'login'}">
-                        <b-button variant="primary">Login</b-button>
-                    </router-link>
-                    <router-link :to="{name: 'list'}">
-                        <b-button variant="success">List</b-button>
-                    </router-link>
+                    <b-button href="#" variant="primary">Login</b-button>
                 </b-card>
             </b-col>
             <b-col></b-col>
@@ -29,7 +24,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Hello component mounted.')
+            console.log('Post component mounted.')
         }
     }
 </script>
