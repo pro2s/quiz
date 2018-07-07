@@ -10,10 +10,15 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-mix.webpackConfig({ devtool: "inline-source-map" });
+
+if (process.env.APP_DEBUG) {
+    mix.webpackConfig({ devtool: "source-map" })
+        .sourceMaps();;
+}
+
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/spa.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
-    .sass('resources/assets/sass/spa.scss', 'public/css')
-    .sourceMaps();
+    .sass('resources/assets/sass/spa.scss', 'public/css');
+    
