@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleTableSeeder::class);
         // User seeder will use the roles above created.
         $this->call(UserTableSeeder::class);
+        // Quizz fill
+        $this->call(QuizTableSeeder::class);
+        $this->call(QuestionTableSeeder::class);
+        $this->call(AnswerTableSeeder::class);
+        $this->call(QuizQuestionTableSeeder::class);
     }
 }

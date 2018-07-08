@@ -44,6 +44,7 @@ class User extends Authenticatable
         return $this->hasRole($roles) || 
             abort(401, 'This action is unauthorized.');
     }
+    
     /**
     * Check multiple roles
     * @param array $roles
@@ -60,5 +61,10 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return null !== $this->roles()->where(`name`, $role)->first();
+    }
+
+    public function quizzes()
+    {
+        return $this->belongsToMany(Quiz::class)->using(UserQuiz::class);
     }
 }
