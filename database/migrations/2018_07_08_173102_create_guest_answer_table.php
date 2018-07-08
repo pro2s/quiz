@@ -27,6 +27,6 @@ class CreateGuestAnswerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guests_answers');
+        Schema::dropIfExists('guest_answer');
     }
 }
