@@ -9,6 +9,7 @@ import Router from 'vue-router';
 import router from './router';
 import BootstrapVue from 'bootstrap-vue';
 import quizStore from './stores/quiz';
+import inc from './stores/inc';
 
 Vue.use(Router);
 Vue.use(BootstrapVue);
@@ -24,6 +25,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app',
     router,
+    store: inc,
     data: {
         privateState: {},
         sharedState: quizStore.state
