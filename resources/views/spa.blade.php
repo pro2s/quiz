@@ -1,5 +1,8 @@
 @extends('layouts.spa')
 
 @section('content')
-<router-view></router-view>
+<navigation></navigation>
+<router-view>
+
+</router-view>
 @endsection
