@@ -21,4 +21,5 @@ Route::get('/welcome', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/account', 'AccountController@index')->name('account');

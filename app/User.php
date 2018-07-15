@@ -38,20 +38,24 @@ class User extends Authenticatable
     public function authorizeRoles($roles)
     {
         if (is_array($roles)) {
-            return $this->hasAnyRole($roles) || 
-                abort(401, 'This action is unauthorized.');
+            return $this->hasAnyRole($roles) || $this->abortAction();
         }
-        return $this->hasRole($roles) || 
-            abort(401, 'This action is unauthorized.');
+        return $this->hasRole($roles) || $this->abortAction();
     }
     
+    protected function abortAction()
+    {
+        $message = 'This action is unauthorized.';
+        abort(401, $message);
+    }
+
     /**
     * Check multiple roles
     * @param array $roles
     */
     public function hasAnyRole($roles)
     {
-        return null !== $this->roles()->whereIn(`name`, $roles)->first();
+        return null !== $this->roles()->whereIn('name', $roles)->first();
     }
 
     /**
@@ -60,7 +64,7 @@ class User extends Authenticatable
     */
     public function hasRole($role)
     {
-        return null !== $this->roles()->where(`name`, $role)->first();
+        return null !== $this->roles()->where('name', $role)->first();
     }
 
     public function quizzes()

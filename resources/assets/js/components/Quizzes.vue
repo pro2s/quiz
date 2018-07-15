@@ -1,5 +1,5 @@
 <template> 
-    <b-container> 
+    <b-container class="mt-5"> 
        <b-alert :show="apiError" variant="danger">Error retriving quizzes</b-alert>
        <quizzes-list />
     </b-container> 

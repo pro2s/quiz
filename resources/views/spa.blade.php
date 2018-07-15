@@ -2,7 +2,5 @@
 
 @section('content')
 <navigation></navigation>
-<router-view>
-
-</router-view>
+<router-view></router-view>
 @endsection
