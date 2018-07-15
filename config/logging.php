@@ -37,6 +37,11 @@ return [
             'driver' => 'stack',
             'channels' => ['single'],
         ],
+        
+        'heroku' => [
+            'driver' => 'stack',
+            'channels' => ['errorlog'],
+        ],
 
         'single' => [
             'driver' => 'single',
