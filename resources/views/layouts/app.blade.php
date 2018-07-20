@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.nav')
+        @include('partials.nav')
         <main class="py-4">
             @yield('content')
         </main>

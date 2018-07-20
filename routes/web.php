@@ -21,5 +21,8 @@ Route::get('/welcome', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/account', 'AccountController@index')->name('account');
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::resource('quizzes', 'QuizController');
+});
