@@ -31,7 +31,7 @@
         <td>{{ $quiz->description }}</td>
         <td class="text-nowrap">
             <div class="btn-group" role="group" aria-label="Actions">
-                <button type="button" class="btn btn-outline-secondary"><i data-feather="edit-3"></i></button>
+                <a class="btn btn-outline-secondary" href="{{route('quiz.edit', $quiz->id)}}"><i data-feather="edit-3"></i></a>
                 <button type="button" class="btn btn-outline-secondary"><i data-feather="trash"></i></button>
                 <button type="button" class="btn btn-success"><i data-feather="power"></i></button>
             </div>

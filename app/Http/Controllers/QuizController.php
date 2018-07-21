@@ -47,7 +47,7 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        return view('admin.quiz', ['quiz' => $quiz]);
     }
 
     /**
