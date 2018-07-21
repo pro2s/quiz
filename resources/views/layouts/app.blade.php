@@ -7,7 +7,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
+    @include('partials.favicons')
+    
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
