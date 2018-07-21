@@ -10,7 +10,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 @roles(['admin', 'editor', 'moderator'])
-                    <a class="nav-link" href="{{ route('admin') }}">{{ __('Dashboard') }}</a>
+                    <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                 @endroles 
             </ul>
             <!-- Right Side Of Navbar -->

@@ -20,9 +20,14 @@ Route::get('/welcome', function () {
 });
 
 Auth::routes();
-
-Route::get('/account', 'AccountController@index')->name('account');
-Route::prefix('admin')->group(function () {
-    Route::get('/', 'DashboardController@index')->name('dashboard');
-    Route::resource('quizzes', 'QuizController');
-});
+Route::get('/account', 'AccountController@index')->name('account')->middleware('auth');
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => ['auth', 'roles:admin,editor,moderator']
+    ],
+    function () {
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::resource('quizzes', 'QuizController');
+    }
+);
