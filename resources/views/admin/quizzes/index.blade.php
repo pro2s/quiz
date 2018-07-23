@@ -24,7 +24,7 @@
     </thead>
     <tbody>
     @foreach ($quizzes as $quiz)
-        <tr is="action-row" {{ $quiz->active ? 'active' : '' }}> 
+        <tr is="action-quiz-row" {{ $quiz->active ? 'active' : '' }}> 
         <th scope="row">{{ $quiz->id }}</th>
         <td class="text-nowrap">{{ $quiz->slug }}</td>
         <td>{{ $quiz->name }}</td>
@@ -40,7 +40,7 @@
                 <button class="btn btn-outline-secondary" @click="deleteQuiz('{{ route('quizzes.destroy', $quiz->id)  }}')">
                     <i data-feather="trash"></i>
                 </button>
-                <button type="button" class="btn" v-bind:class="activeClass" @click="toggleQuiz('')">
+                <button class="btn" v-bind:class="activeClass" @click="toggleQuiz('{{ route('quizzes.toggle', $quiz->id) }}')">
                     <i data-feather="power"></i>
                 </button>
             </div>

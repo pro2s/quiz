@@ -41,5 +41,4 @@ class QuizRequest extends FormRequest
         $this->getInputSource()->replace($data);
         return parent::getValidatorInstance();
     }
-
 }

@@ -10,20 +10,10 @@
 </template>
 
 <script>
-import axios from 'axios'
+import QuizActions from '../mixins/QuizActions.js'
+
 export default {
-    data: function () {
-        return {
-            show: true,
-            isActive: this.active
-        }
-    },
-    props: {
-        active: {
-            type: Boolean,
-            default: false
-        }
-    },
+    mixins: [QuizActions],
     computed: {
         activeClass: function () {
             return {
@@ -34,19 +24,10 @@ export default {
     },
     methods: {
         toggleQuiz(url) {
-            console.log(url);
-            this.isActive = !this.isActive;
-        },
-        doDelete(url) {
-            axios.delete(url).then(_ => this.hide());
+            this._toggleQuiz(url);
         },
         deleteQuiz(url) {
-            this.$dialog.confirm("Some confirmation message")
-                .then(_ => this.doDelete(url))
-                .catch(_ => {});
-        },
-        hide() {
-            this.show = false;
+             this._deleteQuiz(url); 
         }
     }
 }

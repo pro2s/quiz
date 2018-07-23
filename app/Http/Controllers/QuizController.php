@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Quiz;
 use Illuminate\Http\Request;
 use App\Http\Requests\QuizRequest;
+use Illuminate\Support\Facades\Response;
 
 class QuizController extends Controller
 {
@@ -90,5 +91,19 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
         //
+    }
+
+    
+    /**
+     * Toggle active state the specified resource from storage.
+     *
+     * @param  \App\Quiz  $quiz
+     * @return \Illuminate\Http\Response
+     */
+    public function toggle(Quiz $quiz)
+    {
+        $quiz->active = !$quiz->active;
+        $quiz->save();
+        return Response::make('', "200");
     }
 }
