@@ -135,6 +135,8 @@
                 </main>
             </div>
         </div>
+        <portal-target name="modal" multiple>
+        </portal-target>
     </div>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>

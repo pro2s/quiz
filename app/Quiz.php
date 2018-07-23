@@ -15,6 +15,10 @@ class Quiz extends Model
         'id', 'created_at', 'updated_at'
     ];
 
+    protected $fillable = [
+        'name', 'slug', 'image', 'description', 'active' ,'started_at', 'ended_at'
+    ];
+
     const SLUG_LENGTH = 5;
 
     public function users()

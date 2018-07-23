@@ -5,8 +5,14 @@
  */
 
 require('./bootstrap');
-
+import DeleteButton from'./components/DeleteButton.vue';
+import ActionRow from'./components/ActionRow.vue';
+import PortalVue from 'portal-vue';
+import VuejsDialog from 'vuejs-dialog';
 window.Vue = require('vue');
+
+Vue.use(PortalVue);
+Vue.use(VuejsDialog);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,5 +21,9 @@ window.Vue = require('vue');
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: {
+        DeleteButton,
+        ActionRow
+    }
 });
