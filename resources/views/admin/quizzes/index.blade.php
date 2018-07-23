@@ -24,23 +24,23 @@
     </thead>
     <tbody>
     @foreach ($quizzes as $quiz)
-        <tr is="action-row" key="{{$quiz->slug}}"> 
+        <tr is="action-row" {{ $quiz->active ? 'active' : '' }}> 
         <th scope="row">{{ $quiz->id }}</th>
         <td class="text-nowrap">{{ $quiz->slug }}</td>
         <td>{{ $quiz->name }}</td>
         <td>{{ $quiz->description }}</td>
-        <td class="text-nowrap">
+        <td class="text-nowrap" slot="actions" slot-scope="{ deleteQuiz, toggleQuiz, activeClass }">
             <div class="btn-group" role="group" aria-label="Actions">
                 <a class="btn btn-outline-secondary" href="{{route('quizzes.show', $quiz->id)}}">
                     <i data-feather="eye"></i>
                 </a>
-                <a class="btn btn-outline-secondary" href="{{route('quizzes.edit', $quiz->id)}}">
+                <a class="btn btn-outline-secondary" href="{{ route('quizzes.edit', $quiz->id) }}">
                     <i data-feather="edit-3"></i>
                 </a>
-                <delete-button class="btn btn-outline-secondary" url="{{route('quizzes.destroy', $quiz)}}">
-                    <i data-feather="trash-2"></i>
-                </delete-button>
-                <button type="button" class="btn btn-{{ $quiz->active ? 'success' : 'secondary' }}">
+                <button class="btn btn-outline-secondary" @click="deleteQuiz('{{ route('quizzes.destroy', $quiz->id)  }}')">
+                    <i data-feather="trash"></i>
+                </button>
+                <button type="button" class="btn" v-bind:class="activeClass" @click="toggleQuiz('')">
                     <i data-feather="power"></i>
                 </button>
             </div>

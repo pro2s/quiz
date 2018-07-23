@@ -5,11 +5,10 @@
  */
 
 require('./bootstrap');
-import DeleteButton from'./components/DeleteButton.vue';
-import ActionRow from'./components/ActionRow.vue';
+import Vue from 'vue';
 import PortalVue from 'portal-vue';
 import VuejsDialog from 'vuejs-dialog';
-window.Vue = require('vue');
+import ActionQuizRow from'./components/ActionQuizRow.vue';
 
 Vue.use(PortalVue);
 Vue.use(VuejsDialog);
@@ -23,7 +22,6 @@ Vue.use(VuejsDialog);
 const app = new Vue({
     el: '#app',
     components: {
-        DeleteButton,
-        ActionRow
+        ActionQuizRow
     }
 });
