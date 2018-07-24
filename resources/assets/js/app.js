@@ -6,12 +6,11 @@
 
 require('./bootstrap');
 import Vue from 'vue';
-import PortalVue from 'portal-vue';
-import VuejsDialog from 'vuejs-dialog';
+
 import ActionQuizRow from'./components/ActionQuizRow.vue';
 
-Vue.use(PortalVue);
-Vue.use(VuejsDialog);
+import * as ModalDialogs from 'vue-modal-dialogs';
+Vue.use(ModalDialogs);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

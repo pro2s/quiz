@@ -1,4 +1,8 @@
 import axios from 'axios';
+import Confirm from '../components/Confirm.vue';
+import { create } from 'vue-modal-dialogs';
+
+const confirm = create(Confirm, 'title', 'content', 'action');
 
 export default {
     data: function () {
@@ -26,9 +30,7 @@ export default {
             axios.put(url).then(_ => this.toggle()).catch(_ => this.error());
         },
         _deleteQuiz(url) {
-            this.$dialog.confirm("Some confirmation message")
-                .then(_ => this.doDelete(url))
-                .catch(_ => {});
+            confirm('Alert', 'Are you soure?', 'Delete').then(result => result && this.doDelete(url));
         },
         doDelete(url) {
             axios.delete(url).then(_ => this.hide()).catch(_ => this.error());
