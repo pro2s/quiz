@@ -30,5 +30,7 @@ Route::group(
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::put('quizzes/{quiz}/toggle', 'QuizController@toggle')->name('quizzes.toggle');
         Route::resource('quizzes', 'QuizController');
+        Route::resource('questions', 'QuestionController');
+        Route::put('questions/{question}/toggle', 'QuestionController@toggle')->name('questions.toggle');
     }
 );

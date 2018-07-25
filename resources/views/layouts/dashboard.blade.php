@@ -50,14 +50,14 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ active('quizzes.*') }}" href="{{ route('quizzes.index') }}">
-                            <span data-feather="help-circle"></span> 
+                            <span data-feather="list"></span> 
                             {{ __('Quizzes') }} @includeWhen(is_active('quizzes.*'), 'partials.current')
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                            <span data-feather="shopping-cart"></span>
-                            Products
+                            <a class="nav-link {{ active('questions.*') }}" href="{{ route('questions.index') }}">
+                            <span data-feather="help-circle"></span> 
+                            {{ __('Questions') }} @includeWhen(is_active('questions.*'), 'partials.current')
                             </a>
                         </li>
                         <li class="nav-item">
