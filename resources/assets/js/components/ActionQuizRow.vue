@@ -3,7 +3,7 @@
         <slot>
             <td>No data</td>
         </slot>
-        <slot name="actions" :deleteQuiz="deleteQuiz" :toggleQuiz="toggleQuiz" :activeClass="activeClass">
+        <slot name="actions" :deleteQuiz="deleteQuiz" :toggleQuiz="toggleQuiz" :isActive="isActive">
             <td>No actions</td>
         </slot>
     </tr>
@@ -14,14 +14,6 @@ import QuizActions from '../mixins/QuizActions.js'
 
 export default {
     mixins: [QuizActions],
-    computed: {
-        activeClass: function () {
-            return {
-                'btn-success': this.isActive,
-                'btn-secondary': !this.isActive
-            }
-        }
-    },
     methods: {
         toggleQuiz(url) {
             this._toggleQuiz(url);

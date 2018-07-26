@@ -29,7 +29,7 @@
         <td class="text-nowrap">{{ $quiz->slug }}</td>
         <td>{{ $quiz->name }}</td>
         <td>{{ $quiz->description }}</td>
-        <td class="text-nowrap" slot="actions" slot-scope="{ deleteQuiz, toggleQuiz, activeClass }">
+        <td class="text-nowrap" slot="actions" slot-scope="{ deleteQuiz, toggleQuiz, isActive }">
             <div class="btn-group" role="group" aria-label="Actions">
                 <a class="btn btn-outline-secondary" href="{{route('quizzes.show', $quiz->id)}}">
                     <i data-feather="eye"></i>
@@ -40,7 +40,7 @@
                 <button class="btn btn-outline-secondary" @click="deleteQuiz('{{ route('quizzes.destroy', $quiz->id)  }}')">
                     <i data-feather="trash"></i>
                 </button>
-                <button v-cloak class="btn" v-bind:class="activeClass" @click="toggleQuiz('{{ route('quizzes.toggle', $quiz->id) }}')">
+                <button class="btn btn-outline-secondary" url="{{ route('quizzes.toggle', $quiz->id) }}" is="active-button" @action="toggleQuiz" :active="isActive">
                     <i data-feather="power"></i>
                 </button>
             </div>

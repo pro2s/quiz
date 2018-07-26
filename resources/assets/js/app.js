@@ -8,6 +8,7 @@ require('./bootstrap');
 import Vue from 'vue';
 
 import ActionQuizRow from'./components/ActionQuizRow.vue';
+import ActiveButton from'./components/ActiveButton.vue';
 
 import * as ModalDialogs from 'vue-modal-dialogs';
 Vue.use(ModalDialogs);
@@ -21,6 +22,7 @@ Vue.use(ModalDialogs);
 const app = new Vue({
     el: '#app',
     components: {
-        ActionQuizRow
+        ActionQuizRow,
+        ActiveButton
     }
 });
