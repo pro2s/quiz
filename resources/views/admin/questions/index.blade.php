@@ -40,7 +40,7 @@
                 <button class="btn btn-outline-secondary" @click="deleteItem('{{ route('questions.destroy', $question->id)  }}')">
                     <i data-feather="trash"></i>
                 </button>
-                <button v-cloak class="btn" v-bind:class="{'btn-success': active, 'btn-secondary': !active }">
+                <button class="btn btn-outline-secondary" url="{{ route('questions.toggle', $quiz->id) }}" is="active-button" @action="togleItem" :active="active">
                     <i data-feather="power"></i>
                 </button>
             </div>

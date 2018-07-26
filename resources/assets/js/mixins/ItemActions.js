@@ -1,6 +1,6 @@
-import axios from 'axios';
 import Confirm from '../components/Confirm.vue';
 import { create } from 'vue-modal-dialogs';
+import resorces from '../api/resorces';
 
 const confirm = create(Confirm, 'title', 'content', 'action');
 
@@ -19,13 +19,13 @@ export default {
     },
     methods: {
         _toggleItem(url) {
-            axios.put(url).then(_ => this.toggle()).catch(_ => this.error());
+            resorces.toggleItem(url).then(_ => this.toggle()).catch(_ => this.error());
         },
         _deleteItem(url) {
             confirm('Alert', 'Are you soure?', 'Delete').then(result => result && this.doDelete(url));
         },
         doDelete(url) {
-            axios.delete(url).then(_ => this.hide()).catch(_ => this.error());
+            resorces.deleteItem(url).then(_ => this.hide()).catch(_ => this.error());
         },
         error() {
             console.log('error');
