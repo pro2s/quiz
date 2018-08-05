@@ -17,7 +17,4 @@ class QuizController extends Controller
     {
         return Quiz::where('slug', $slug)->where('active', true)->first();
     }
-
 }
-
-
