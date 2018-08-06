@@ -36,7 +36,7 @@ export default {
             resorces.deleteItem(url).then(_ => this.hide()).catch(_ => this.error());
         },
         error() {
-            console.log('error');
+            this.$notify({group: 'error', type: 'error', title:'Error', text: 'Something went wrong, please try again later'})
         },
         hide() {
             this.show = false;

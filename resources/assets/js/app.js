@@ -7,12 +7,15 @@
 require('./bootstrap');
 import Vue from 'vue';
 
+import * as ModalDialogs from 'vue-modal-dialogs';
+import Notifications from 'vue-notification';
+
+Vue.use(ModalDialogs);
+Vue.use(Notifications);
+
 import ActionQuizRow from'./components/ActionQuizRow.vue';
 import ActiveButton from'./components/ActiveButton.vue';
-
-import * as ModalDialogs from 'vue-modal-dialogs';
-Vue.use(ModalDialogs);
-
+window.Vue = Vue;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

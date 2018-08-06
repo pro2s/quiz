@@ -134,8 +134,9 @@
                     @yield('content')
                 </main>
             </div>
-        </div>
-        <dialogs-wrapper transition-name="fade"/>
+        </div> 
+        <notifications group="error" position="top right" width="400px"></notifications>
+        <dialogs-wrapper transition-name="fade"></dialogs-wrapper>
     </div>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
