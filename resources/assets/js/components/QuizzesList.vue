@@ -11,7 +11,7 @@
                     <p class="card-text"> 
                         {{ quiz.description }}
                     </p> 
-                <b-button href="#" variant="success">Go</b-button> 
+                <b-button :to="{ name: 'quiz', params: { slug: quiz.slug }}" href="#" variant="success">Start</b-button> 
             </b-card> 
         </b-col> 
     </b-row> 

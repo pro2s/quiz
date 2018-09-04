@@ -15,6 +15,6 @@ class QuizController extends Controller
  
     public function show($slug)
     {
-        return Quiz::where('slug', $slug)->where('active', true)->first();
+        return Quiz::with(['questions'])->where('slug', $slug)->where('active', true)->first();
     }
 }
