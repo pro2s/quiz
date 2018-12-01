@@ -33,6 +33,6 @@ class Quiz extends Model
 
     public function createSlug($lenght = self::SLUG_LENGTH)
     {
-        bin2hex(random_bytes(5));
+        return bin2hex(random_bytes($lenght));
     }
 }
