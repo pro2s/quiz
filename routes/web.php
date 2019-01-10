@@ -28,9 +28,14 @@ Route::group(
     ],
     function () {
         Route::get('/', 'DashboardController@index')->name('dashboard');
+
         Route::put('quizzes/{quiz}/toggle', 'QuizController@toggle')->name('quizzes.toggle');
+        Route::put('quizzes/{quiz}/add/{question}', 'QuizController@addQuestion')->name('quizzes.addQuestion');
+        Route::delete('quizzes/{quiz}/delete/{question}', 'QuizController@deleteQuestion')->name('quizzes.deleteQuestion');
         Route::resource('quizzes', 'QuizController');
-        Route::resource('questions', 'QuestionController');
+
+        Route::get('questions/search', 'QuestionController@search')->name('questions.search');
         Route::put('questions/{question}/toggle', 'QuestionController@toggle')->name('questions.toggle');
+        Route::resource('questions', 'QuestionController');
     }
 );

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Http\Requests\QuestionRequest;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class QuestionController extends Controller
 {
@@ -25,7 +28,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $question = new Question();
+        return view('admin.quizzes.edit', compact('question'));
     }
 
     /**
@@ -34,9 +38,13 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionRequest $request)
     {
-        //
+        $question = new Question();
+        $data = $request->validated();
+        $question->fill($data);
+        $question->save();
+        return redirect()->route('questions.show', [$question]);
     }
 
     /**
@@ -47,7 +55,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return view('admin.questions.show', compact('question'));
     }
 
     /**
@@ -58,7 +66,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('admin.questions.edit', compact('question'));
     }
 
     /**
@@ -68,9 +76,11 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(QuestionRequest $request, Question $question)
     {
-        //
+        $data = $request->validated();
+        $question->update($data);
+        return redirect()->route('questions.edit', [$question]);
     }
 
     /**
@@ -92,6 +102,23 @@ class QuestionController extends Controller
      */
     public function toggle(Question $question)
     {
-        //
+        $question->active = !$question->active;
+        $question->save();
+        return Response::make('', "200");
+    }
+
+     /**
+     * Search a listing of the resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request  $request)
+    {
+        $text = $request->get('text', false);
+        if ($text) {
+            return Question::where('active', true)->where('title', 'like', '%'. $text.'%')->get();
+        } else {
+            return Question::where('active', true)->get();
+        }
     }
 }

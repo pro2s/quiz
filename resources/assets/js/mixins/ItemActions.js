@@ -21,11 +21,11 @@ export default {
         _toggleItem(url) {
             resorces.toggleItem(url).then(_ => this.toggle()).catch(_ => this.error());
         },
-        _deleteItem(url) {
-            confirm('Alert', 'Are you soure?', 'Delete').then(result => result && this.doDelete(url));
+        _deleteItem(url, item) {
+            confirm('Alert', 'Are you soure?', 'Delete').then(result => result && this.doDelete(url, item));
         },
-        doDelete(url) {
-            resorces.deleteItem(url).then(_ => this.hide()).catch(_ => this.error());
+        doDelete(url, item) {
+            resorces.deleteItem(url).then(_ => this.hide(item)).catch(_ => this.error());
         },
         error() {
             console.log('error');

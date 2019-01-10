@@ -7,11 +7,13 @@
 require('./bootstrap');
 import Vue from 'vue';
 
-import ActionQuizRow from'./components/ActionQuizRow.vue';
-import ActiveButton from'./components/ActiveButton.vue';
-import ActionRow from'./components/ActionRow.vue';
-
+import ActionQuizRow from './components/ActionQuizRow.vue';
+import ActiveButton from './components/ActiveButton.vue';
+import DeleteButton from './components/DeleteButton.vue';
+import QuestionsList from './components/QuestionsList.vue';
+import ActionRow from './components/ActionRow.vue';
 import * as ModalDialogs from 'vue-modal-dialogs';
+
 Vue.use(ModalDialogs);
 
 /**
@@ -25,6 +27,8 @@ const app = new Vue({
     components: {
         ActionQuizRow,
         ActiveButton,
-        ActionRow
+        DeleteButton,
+        ActionRow,
+        QuestionsList
     }
 });

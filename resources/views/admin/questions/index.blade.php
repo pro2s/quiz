@@ -40,7 +40,7 @@
                 <button class="btn btn-outline-secondary" @click="deleteItem('{{ route('questions.destroy', $question->id)  }}')">
                     <i data-feather="trash"></i>
                 </button>
-                <button class="btn btn-outline-secondary" url="{{ route('questions.toggle', $quiz->id) }}" is="active-button" @action="togleItem" :active="active">
+                <button class="btn btn-outline-secondary" url="{{ route('questions.toggle', $question->id) }}" is="active-button" @action="toggleItem" :active="active">
                     <i data-feather="power"></i>
                 </button>
             </div>
