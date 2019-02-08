@@ -15,9 +15,8 @@ Vue.use(Notifications);
 
 import ActiveButton from './components/ActiveButton.vue';
 import DeleteButton from './components/DeleteButton.vue';
-import QuestionsList from './components/QuestionsList.vue';
 import ActionRow from './components/ActionRow.vue';
-import ActionQuizRow from'./components/ActionQuizRow.vue';
+import QuestionsList from './components/QuestionsList.vue';
 window.Vue = Vue;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,7 +27,6 @@ window.Vue = Vue;
 const app = new Vue({
     el: '#app',
     components: {
-        ActionQuizRow,
         ActiveButton,
         DeleteButton,
         ActionRow,

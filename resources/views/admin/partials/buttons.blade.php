@@ -10,7 +10,7 @@
     </a>
     @else
     <a class="btn btn-sm btn-outline-success mr-2" href="{{ route($route . '.edit', $id) }}">
-        <span data-feather="pencil"></span>
+        <span data-feather="edit-2"></span>
         {{ __('Edit') }}
     </a>
     @endif
