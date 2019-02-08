@@ -61,9 +61,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ active('users.*') }}" href="{{ route('users.index') }}">
+                            <span data-feather="users"></span> 
+                            {{ __('Customers') }} @includeWhen(is_active('users.*'), 'partials.current')
+                            </a>    
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
-                            Customers
+                            <span data-feather="award"></span>
+                            Awards
                             </a>
                         </li>
                         <li class="nav-item">

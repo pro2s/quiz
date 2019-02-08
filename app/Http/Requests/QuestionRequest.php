@@ -25,9 +25,7 @@ class QuestionRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'image' => 'required',
-            'slug' => 'required|unique:quizzes|max:255',
-            'description' => 'required',
+            'slug' => 'required|unique:questions|max:255',
             'active' => 'required',
         ];
     }

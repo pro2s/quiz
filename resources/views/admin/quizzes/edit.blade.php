@@ -15,19 +15,19 @@
         @csrf
         <div class="form-group">
             <label for="name">{{ __('Name') }}</label>
-            <input type="text" class="form-control" name="name" id="name" value="{{ $quiz->name }}" placeholder="{{ __('Enter name') }}">
+            <input type="text" class="form-control @iiclass('name')" name="name" id="name" value="{{ $quiz->name }}" placeholder="{{ __('Enter name') }}">
         </div>
         <div class="form-group">
             <label for="slug">{{ __('Slug') }}</label>
-            <input type="text" class="form-control" name="slug" id="slug" value="{{ $quiz->slug }}" placeholder="{{ __('Enter slug') }}">
+            <input type="text" class="form-control @iiclass('slug')" name="slug" id="slug" value="{{ $quiz->slug }}" placeholder="{{ __('Enter slug') }}">
         </div>
         <div class="form-group">
             <label for="image">{{ __('Image') }}</label>
-            <input type="url" class="form-control" name="image" id="image" value="{{ $quiz->image }}" placeholder="{{ __('Enter image url') }}">
+            <input type="url" class="form-control @iiclass('image')" name="image" id="image" value="{{ $quiz->image }}" placeholder="{{ __('Enter image url') }}">
         </div>
         <div class="form-group">
             <label for="description">{{ __('Description') }}</label>
-            <textarea class="form-control" name="description" id="description" rows="3">{{ $quiz->description }}</textarea>
+            <textarea class="form-control @iiclass('description')" name="description" id="description" rows="3">{{ $quiz->description }}</textarea>
         </div>
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="active" id="active" {{ $quiz->active ? 'checked="checked"' : '' }}>
@@ -35,11 +35,11 @@
         </div>
         <div class="form-group">
             <label for="started_at">{{ __('Started') }}</label>
-            <input type="date" class="form-control" name="started_at" id="started_at" value="{{ $quiz->started_at }}" placeholder="{{ __('Enter start date') }}">
+            <input type="date" class="form-control @iiclass('started_at')" name="started_at" id="started_at" value="{{ $quiz->started_at }}" placeholder="{{ __('Enter start date') }}">
         </div>
         <div class="form-group">
             <label for="ended_at">{{ __('Ended') }}</label>
-            <input type="date" class="form-control" name="ended_at" id="ended_at" value="{{ $quiz->ended_at }}" placeholder="{{ __('Enter end date') }}">
+            <input type="date" class="form-control @iiclass('ended_at')" name="ended_at" id="ended_at" value="{{ $quiz->ended_at }}" placeholder="{{ __('Enter end date') }}">
         </div>
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </form>

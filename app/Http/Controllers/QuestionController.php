@@ -7,6 +7,7 @@ use App\Http\Requests\QuestionRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Log;
 
 class QuestionController extends Controller
 {
@@ -29,7 +30,7 @@ class QuestionController extends Controller
     public function create()
     {
         $question = new Question();
-        return view('admin.quizzes.edit', compact('question'));
+        return view('admin.questions.edit', compact('question'));
     }
 
     /**
@@ -40,6 +41,7 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
+        $request->flash();
         $question = new Question();
         $data = $request->validated();
         $question->fill($data);

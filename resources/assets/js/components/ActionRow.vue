@@ -3,7 +3,7 @@
         <slot>
             <td>No data</td>
         </slot>
-        <slot name="actions" :deleteItem="deleteItem" :toggleItem="toggleItem" :active="active">
+        <slot name="actions" :deleteItem="deleteItem" :toggleItem="toggleItem" :isActive="isActive">
             <td>No actions</td>
         </slot>
     </tr>

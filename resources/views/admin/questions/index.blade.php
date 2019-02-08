@@ -29,7 +29,7 @@
         <td class="text-nowrap">{{ $question->slug }}</td>
         <td>{{ $question->title }}</td>
         <td>{{ $question->description }}</td>
-        <td class="text-nowrap" slot="actions" slot-scope="{ deleteItem, toggleItem, active }">
+        <td class="text-nowrap" slot="actions" slot-scope="{ deleteItem, toggleItem, isActive }">
             <div class="btn-group" role="group" aria-label="Actions">
                 <a class="btn btn-outline-secondary" href="{{route('questions.show', $question->id)}}">
                     <i data-feather="eye"></i>
@@ -40,7 +40,7 @@
                 <button class="btn btn-outline-secondary" @click="deleteItem('{{ route('questions.destroy', $question->id)  }}')">
                     <i data-feather="trash"></i>
                 </button>
-                <button class="btn btn-outline-secondary" url="{{ route('questions.toggle', $question->id) }}" is="active-button" @action="toggleItem" :active="active">
+                <button class="btn btn-outline-secondary" url="{{ route('questions.toggle', $question->id) }}" is="active-button" @action="toggleItem" :active="isActive">
                     <i data-feather="power"></i>
                 </button>
             </div>
