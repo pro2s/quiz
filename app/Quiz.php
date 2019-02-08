@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'id', 'created_at', 'updated_at'
+    ];
+
+    protected $fillable = [
+        'name', 'slug', 'image', 'description', 'active' ,'started_at', 'ended_at'
+    ];
+
     const SLUG_LENGTH = 5;
 
     public function users()

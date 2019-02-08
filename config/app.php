@@ -160,7 +160,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        
+        Watson\Active\ActiveServiceProvider::class
     ],
 
     /*
@@ -175,7 +176,7 @@ return [
     */
 
     'aliases' => [
-
+        'Active' => Watson\Active\Facades\Active::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

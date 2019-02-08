@@ -5,16 +5,17 @@
  */
 
 import Vue from 'vue';
+
 import Router from 'vue-router';
+Vue.use(Router);
+
 import BootstrapVue from 'bootstrap-vue';
-import Vuex from 'vuex';
+Vue.use(BootstrapVue);
+
+import Navigation from './components/Navigation.vue';
 
 import router from './router';
-import store from './router';
-
-Vue.use(Router);
-Vue.use(BootstrapVue);
-Vue.use(Vuex);
+import store from './store';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -24,6 +25,9 @@ Vue.use(Vuex);
 
 const app = new Vue({
     el: '#app',
+    components: {
+        Navigation
+    },
     router,
     store
 });
