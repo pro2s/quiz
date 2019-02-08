@@ -1,18 +1,7 @@
 @extends('layouts.dashboard')
 @section('title', __('Show Quiz'))
 @section('buttons')
-<a class="btn btn-sm btn-outline-secondary mr-2" href="{{ route('quizzes.index') }}">
-    <span data-feather="corner-left-up"></span>
-    {{ __('Back') }}
-</a>
-<a class="btn btn-sm btn-outline-success mr-2" href="{{route('quizzes.edit', $quiz->id)}}">
-    <span data-feather="edit-3"></span>
-    {{ __('Edit') }}
-</a>
-<button class="btn btn-sm btn-outline-danger mr-2">
-    <span data-feather="minus"></span>
-    {{ __('Delete') }}
-</button>
+@include('admin.partials.buttons', ['id' => $quiz->id, 'route' => 'quizzes', 'exists' => $quiz->exists, 'isEdit' => false])
 @stop
 @section('content')
 <div class="card-deck">
@@ -35,8 +24,10 @@
     <div class="card">
         <div class="card-header">{{ __('Questions') }}</div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"></li>
+            @foreach ($quiz->questions as $question)
+                <li class="list-group-item {{ $question->active ? '': 'disabled' }}">{{ $question->title }}</li>
+            @endforeach
         </ul>
     </div>    
 </div>
-@endsection
+@stop
