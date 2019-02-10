@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -10,10 +10,20 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-if (process.env.NODE_ENV === 'development') {
-    mix.webpackConfig({ devtool: "source-map" })
+switch(process.env.NODE_ENV) {
+    case 'development':
+        mix.webpackConfig({
+            devtool: "source-map",
+        })
         .sourceMaps();
+    break;
+    case 'stats': 
+        mix.webpackConfig({
+            plugins: [
+                new BundleAnalyzerPlugin(),
+            ],
+        });
+    break;
 }
 
 mix.js('resources/assets/js/app.js', 'public/js')
