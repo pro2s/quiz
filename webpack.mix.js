@@ -10,6 +10,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
  | file for the application as well as bundling up all the JS files.
  |
  */
+
 switch(process.env.NODE_ENV) {
     case 'development':
         mix.webpackConfig({
