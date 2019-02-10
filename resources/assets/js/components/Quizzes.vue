@@ -19,7 +19,6 @@
             'getQuiezzes'
         ]),
         mounted() { 
-            console.log('Quizzes component mounted.');
             this.getQuiezzes();
         } 
     } 
