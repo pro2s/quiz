@@ -33,3 +33,5 @@ const app = new Vue({
         QuestionsList
     }
 });
+
+window.bsn = require('bootstrap.native/dist/bootstrap-native-v4');
