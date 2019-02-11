@@ -13,10 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+Route::group(
+    [
+        'middleware' => 'api',
+        'prefix' => 'auth'
+    ],
+    function ($router) {
+        Route::post('login', 'Api\AuthController@login');
+        Route::post('logout', 'Api\AuthController@logout');
+        Route::get('refresh', 'Api\AuthController@refresh');
+        Route::get('user', 'Api\AuthController@user');
+    }
+);
 
 Route::get('quizzes', 'Api\QuizController@index');
 Route::get('quize/{slug}', 'Api\QuizController@show');

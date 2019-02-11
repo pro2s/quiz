@@ -27,6 +27,7 @@
 </head>
 <body>
     <div id="app">
+        <vue-topprogress ref="topProgress" color="#fa0"></vue-topprogress>
         @yield('content')
     </div>
 </body>
