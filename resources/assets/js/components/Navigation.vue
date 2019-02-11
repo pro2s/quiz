@@ -19,23 +19,23 @@
                 <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
             </b-nav-form>
+        
+            <component :is="userDropDown" />
 
-            <b-nav-item-dropdown right>
-                <!-- Using button-content slot -->
-                <template slot="button-content">
-                <em>User</em>
-                </template>
-                <b-dropdown-item href="#">Profile</b-dropdown-item>
-                <b-dropdown-item href="#">Signout</b-dropdown-item>
-            </b-nav-item-dropdown>
             </b-navbar-nav>
-
         </b-collapse>
+        <dialogs-wrapper wrapper-name="default" />
     </b-navbar>
 </template> 
  
 <script> 
+    import LoginDropDown from './LoginDropDown.vue';
+    import LogoutDropDown from './LogoutDropDown.vue';
     export default { 
-        
+        computed: {
+            userDropDown() {
+                return this.$auth.check() ? LogoutDropDown : LoginDropDown;
+            }
+        }
     } 
 </script> 

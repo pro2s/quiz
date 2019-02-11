@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Quiz;
-use Illuminate\Http\Request;
+use App\Question;
 use App\Http\Requests\QuizRequest;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class QuizController extends Controller
@@ -54,7 +56,8 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        return view('admin.quizzes.show', compact('quiz'));
+        $questions = $quiz->questions;
+        return view('admin.quizzes.show', compact('quiz', 'questions'));
     }
 
     /**
@@ -106,4 +109,31 @@ class QuizController extends Controller
         $quiz->save();
         return Response::make('', "200");
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Quiz  $quiz
+     * @param  \App\Question $question
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteQuestion(Quiz $quiz, Question $question)
+    {
+        //
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Quiz  $quiz
+     * @param  \App\Question $question
+     * @return \Illuminate\Http\Response
+     */
+    public function addQuestion(Quiz $quiz, Question $question)
+    {
+        //
+    }
+
+
 }

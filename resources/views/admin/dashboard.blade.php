@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-3">   
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -13,8 +13,40 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <div class="card-text">You are logged in!</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">   
+            <div class="card">
+                <div class="card-header">
+                    Quizes
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Quizes information</h5>
+                    <div class="card-text"></div>
+                </div>
+            </div>  
+        </div>
+        <div class="col-md-3">   
+            <div class="card">
+                <div class="card-header">
+                Questions
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Quizes information</h5>
+                <div class="card-text"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">   
+            <div class="card">
+                <div class="card-header">
+                Users
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">Users information</h5>
+                <div class="card-text"></div>
                 </div>
             </div>
         </div>

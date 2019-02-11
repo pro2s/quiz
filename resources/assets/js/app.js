@@ -7,12 +7,17 @@
 require('./bootstrap');
 import Vue from 'vue';
 
-import ActionQuizRow from'./components/ActionQuizRow.vue';
-import ActiveButton from'./components/ActiveButton.vue';
-
+import Notifications from 'vue-notification';
 import * as ModalDialogs from 'vue-modal-dialogs';
-Vue.use(ModalDialogs);
 
+Vue.use(ModalDialogs);
+Vue.use(Notifications);
+
+import ActiveButton from './components/ActiveButton.vue';
+import DeleteButton from './components/DeleteButton.vue';
+import ActionRow from './components/ActionRow.vue';
+import QuestionsList from './components/QuestionsList.vue';
+window.Vue = Vue;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -22,7 +27,11 @@ Vue.use(ModalDialogs);
 const app = new Vue({
     el: '#app',
     components: {
-        ActionQuizRow,
-        ActiveButton
+        ActiveButton,
+        DeleteButton,
+        ActionRow,
+        QuestionsList
     }
 });
+
+window.bsn = require('bootstrap.native/dist/bootstrap-native-v4');
