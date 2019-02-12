@@ -12,17 +12,12 @@
                         {{ quiz.description }}
                     </p> 
                 </b-card-body>
-                <question v-if="quiz.question" :quiz-slug="quiz.slug" :question="quiz.question" />
             </b-card> 
     </div>
 </template> 
 
 <script> 
-import Question from './Question.vue'; 
 export default { 
-    props: ['quiz'],
-    components: {
-        Question
-    },
+    props: ['quiz']
 } 
 </script>

@@ -1,9 +1,11 @@
 <template> 
     <b-container class="mt-5"> 
-        <b-alert :show="apiError" variant="danger">Error retriving quizzes</b-alert>
+        <b-alert :show="apiError" variant="danger">Error retriving the quiz</b-alert>
         <b-row  class="justify-content-md-center">
             <b-col cols="8">
-                <quiz-view :quiz="getQuizBySlug($route.params.slug)"/>
+                <transition name="component-fade" mode="out-in">
+                    <component :is="quiz && quizView" :quiz="quiz"/>
+                </transition>
             </b-col>
         </b-row>
     </b-container> 
@@ -11,15 +13,21 @@
  
 <script> 
     import QuizView from './QuizView.vue'; 
+    import QuizResult from './QuizResult.vue'; 
     import { mapActions, mapGetters } from 'vuex'
     export default { 
-        components: {
-            QuizView
-        },
-        computed: mapGetters([ 
+        computed: {
+            quizView() {
+                return this.quiz.finished ? QuizResult : QuizView;
+            },
+            quiz() {
+                return this.getQuizBySlug(this.$route.params.slug);
+            },
+            ...mapGetters([ 
             'apiError',
             'getQuizBySlug'
-        ]), 
+            ])
+        }, 
         created () {
             // загружаем данные, когда представление создано
             // и данные реактивно отслеживаются
@@ -39,3 +47,14 @@
         }
     } 
 </script> 
+
+<style scoped>
+    .component-fade-enter-active, .component-fade-leave-active {
+        transition: opacity .3s ease;
+    }
+    .component-fade-enter, .component-fade-leave-to
+        /* .component-fade-leave-active до версии 2.1.8 */ {
+        opacity: 0;
+    }
+</style>
+>

@@ -19,6 +19,8 @@ class Quiz extends Model
         'name', 'slug', 'image', 'description', 'active' ,'started_at', 'ended_at'
     ];
 
+    protected $appends = ['is_finished', 'question'];
+
     const SLUG_LENGTH = 5;
 
     public function users()
@@ -34,5 +36,15 @@ class Quiz extends Model
     public function createSlug($lenght = self::SLUG_LENGTH)
     {
         return bin2hex(random_bytes($lenght));
+    }
+
+    public function getIsFinishedAttribute()
+    {
+        return $this->attributes['finished'] = false;
+    }
+
+    public function getQuestionAttribute()
+    {
+        return $this->attributes['question'] = $this->questions[0] ?? false;
     }
 }

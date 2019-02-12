@@ -23,6 +23,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/spa.css') }}" rel="stylesheet">
 
 </head>
 <body>
