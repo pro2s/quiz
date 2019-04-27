@@ -36,7 +36,7 @@ class QuizController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\QuizRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(QuizRequest $request)
@@ -74,8 +74,8 @@ class QuizController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Quiz  $quiz
+     * @param  \Illuminate\Http\QuizRequest $request
+     * @param  \App\Quiz $quiz
      * @return \Illuminate\Http\Response
      */
     public function update(QuizRequest $request, Quiz $quiz)
@@ -93,9 +93,8 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        // TODO Delete quiz
     }
-
     
     /**
      * Toggle active state the specified resource from storage.
@@ -119,7 +118,7 @@ class QuizController extends Controller
      */
     public function deleteQuestion(Quiz $quiz, Question $question)
     {
-        //
+        // TODO Delete quiestion from quiz
     }
 
 
@@ -132,7 +131,7 @@ class QuizController extends Controller
      */
     public function addQuestion(Quiz $quiz, Question $question)
     {
-        //
+        // TODO Add question
     }
 
 

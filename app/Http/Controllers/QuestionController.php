@@ -36,14 +36,14 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\QuestionRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(QuestionRequest $request)
     {
         $request->flash();
-        $question = new Question();
         $data = $request->validated();
+        $question = new Question();
         $question->fill($data);
         $question->save();
         return redirect()->route('questions.show', [$question]);
@@ -74,7 +74,7 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\QuestionRequest $request
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
