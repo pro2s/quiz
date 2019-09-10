@@ -24,7 +24,7 @@ class AnswerTableSeeder extends Seeder
                 $answer->answer = $answerText;
                 $answer->active = true;
                 $answer->correct = $number == $correct;
-                $answer->save();    
+                $answer->save();
             }
         }
     }

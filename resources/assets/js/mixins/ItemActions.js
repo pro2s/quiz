@@ -1,6 +1,6 @@
-import Confirm from '../components/Confirm.vue';
+import Confirm from '@/components/dashboard/Confirm.vue';
 import { create } from 'vue-modal-dialogs';
-import resorces from '../api/resorces';
+import resorces from '@/api/resources';
 
 const confirm = create(Confirm, 'title', 'content', 'action');
 

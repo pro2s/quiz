@@ -10,6 +10,14 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.webpackConfig({
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': __dirname + '/resources/assets/js'
+        },
+    },
+})
 
 switch(process.env.NODE_ENV) {
     case 'development':

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import ItemActions from '../mixins/ItemActions.js'
+import ItemActions from '@/mixins/ItemActions.js'
 
 export default {
     mixins: [ItemActions],

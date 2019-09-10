@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "resources/assets/js/*"
+            ]
+        }
+    },
+    "exclude": ["node_modules"]
+}

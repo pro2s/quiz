@@ -22,9 +22,9 @@
 </template>
 <script>
 import { MinusIcon, PlusIcon } from 'vue-feather-icons'
-import ItemActions from '../mixins/ItemActions.js'
-import AddQuestion from '../components/AddQuestion.vue'
-import Alert from '../components/Alert.vue';
+import ItemActions from '@/mixins/ItemActions.js'
+import AddQuestion from '@/components/dashboard/AddQuestion.vue'
+import Alert from '@/components/dashboard/Alert.vue';
 import { create } from 'vue-modal-dialogs';
 
 const alert = create(Alert, 'title', 'content');

@@ -63,7 +63,7 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function edit(Question $question)
@@ -75,7 +75,7 @@ class QuestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\QuestionRequest $request
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function update(QuestionRequest $request, Question $question)
@@ -88,7 +88,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function destroy(Question $question)
@@ -99,7 +99,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function toggle(Question $question)
@@ -111,7 +111,7 @@ class QuestionController extends Controller
 
      /**
      * Search a listing of the resource.
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function search(Request  $request)
