@@ -9,19 +9,18 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "stats": "cross-env NODE_ENV=stats node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "postinstall": "has-env BUILD_ASSETS && npm run production"
+    "postinstall": "node if-env-run.js BUILD_ASSETS production",
+    "test": "cross-env NODE_ENV=stats if-env-run.js BUILD_ASSETS production"
   },
   "devDependencies": {
     "@websanova/vue-auth": "^2.21.14-beta",
-    "axios": "^0.18.1",
-    "bootstrap": "^4.3.1",
+    "axios": ">=0.18.1",
+    "bootstrap": ">=4.3.1",
     "bootstrap-vue": "^2.0.0",
     "bootstrap.native": "^2.0.27",
-    "cross-env": "^5.2.1",
-    "has-env": "^1.0.1",
-    "jquery": "^3.4.1",
+    "cross-env": "^5.1.6",
+    "jquery": ">=3.4.1",
     "laravel-mix": "^4.1.4",
-    "popper.js": "^1.15.0",
     "resolve-url-loader": "^2.3.2",
     "sass": "^1.22.10",
     "sass-loader": "^7.3.1",
@@ -35,7 +34,7 @@
     "vue-template-compiler": "^2.6.10",
     "vue-top-progress": "^0.7.0",
     "vuex": "^3.1.1",
-    "webpack-bundle-analyzer": "^3.4.1"
+    "webpack-bundle-analyzer": ">=3.4.1"
   },
   "dependencies": {}
 }

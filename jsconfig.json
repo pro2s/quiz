@@ -5,7 +5,7 @@
         "baseUrl": "./",
         "paths": {
             "@/*": [
-                "resources/assets/js/*"
+                "resources/js/*"
             ]
         }
     },

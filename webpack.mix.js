@@ -14,7 +14,7 @@ mix.webpackConfig({
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            '@': __dirname + '/resources/assets/js'
+            '@': __dirname + '/resources/js'
         },
     },
 })
@@ -35,13 +35,13 @@ switch(process.env.NODE_ENV) {
     break;
 }
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .sass('resources/assets/sass/dashboard.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/dashboard.scss', 'public/css');
 
-mix.js('resources/assets/js/spa.js', 'public/js')
-    .sass('resources/assets/sass/spa.scss', 'public/css');
+mix.js('resources/js/spa.js', 'public/js')
+    .sass('resources/sass/spa.scss', 'public/css');
 
-mix.sass('resources/assets/sass/vendor.scss', 'public/css');
+mix.sass('resources/sass/vendor.scss', 'public/css');
 
 mix.extract(['vue', 'axios']);
