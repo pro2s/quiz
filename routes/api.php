@@ -27,4 +27,6 @@ Route::group(
 );
 
 Route::get('quizzes', 'Api\QuizController@index');
-Route::get('quize/{slug}', 'Api\QuizController@show');
+Route::get('quiz/{slug}', 'Api\QuizController@show');
+Route::get('quiz/{slug}/next/{question}', 'Api\QuizController@next');
+Route::post('answer/{quiz}/{question}', 'Api\AnswerController@send');
