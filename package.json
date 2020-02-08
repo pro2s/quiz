@@ -18,7 +18,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "bootstrap.native": "^2.0.25",
     "cross-env": "^5.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "laravel-mix": "^4.0.14",
     "popper.js": "^1.14.7",
     "resolve-url-loader": "^2.3.1",
