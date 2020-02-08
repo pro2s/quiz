@@ -18,7 +18,8 @@
                     {{ answer.answer }}
             </b-list-group-item>
         </b-list-group>
-        <b-card-footer v-if="selectedAnswer" :class="{'bg-warning': getAnswer === false, 'bg-success': getAnswer === true}">
+        <b-card-footer v-if="selectedAnswer" 
+            :class="{'bg-warning': getAnswer === false, 'bg-success': getAnswer === true, 'footer': true}">
             <transition name="slide-fade" :duration="1000" @after-leave="getNext()" @enter="leave()">
                 <b-button variant="success" @click="send()" v-if="getAnswer === undefined">
                     Next question
@@ -35,7 +36,7 @@
         data() {
             return {
                 selectedAnswer: undefined,
-                answer: undefined
+                answer: undefined,
             }
         },
         watch: {
@@ -48,7 +49,7 @@
         computed: {
             ...mapGetters([ 
                 'getAnswer'
-            ])
+            ]),
         },
         methods: {
             ...mapActions([
@@ -57,20 +58,13 @@
                 'getNextQuizQuestion'
             ]),
             selectAnswer(id) {
-                console.info(this.question.slug);
                 this.selectedAnswer = id;
             },
             send() {
                 this.answer = {'quiz': this.quizSlug, 'question': this.question.slug, 'id': this.selectedAnswer};
                 this.sendAnswer(this.answer);
-                console.time('answer')
-            },
-            leave() {
-                console.timeLog('answer');    
             },
             getNext() {
-                console.timeLog('answer');
-                console.timeEnd('answer')
                 this.getNextQuizQuestion(this.answer);
             }
         }
@@ -78,6 +72,9 @@
 </script> 
 
 <style scoped>
+    .footer {
+        min-height: 70px;
+    }
     .slide-fade-enter-active {
         transition: all .3s ease;
     }
