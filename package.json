@@ -36,5 +36,8 @@
     "vuex": "^3.5.1",
     "webpack-bundle-analyzer": "^3.9.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "engines": {
+    "node": "12.x"
+  }
 }
