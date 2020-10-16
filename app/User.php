@@ -34,35 +34,36 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-    * @param string|array $roles
-    */
-    public function authorizeRoles($roles)
+     * @param string|array $roles
+     *
+     * @return bool
+     * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function authorizeRoles($roles): bool
     {
-        if (is_array($roles)) {
-            return $this->hasAnyRole($roles) || $this->abortAction();
+        $result = (is_array($roles) && $this->hasAnyRole($roles)) || $this->hasRole($roles);
+
+        if (!$result) {
+            abort(401, 'This action is unauthorized.');
         }
-        return $this->hasRole($roles) || $this->abortAction();
-    }
-    
-    protected function abortAction()
-    {
-        $message = 'This action is unauthorized.';
-        abort(401, $message);
+
+        return $result;
     }
 
     /**
-    * Check multiple roles
-    * @param array $roles
-    */
+     * Check multiple roles
+     * @param array $roles
+     */
     public function hasAnyRole($roles)
     {
         return null !== $this->roles()->whereIn('name', $roles)->first();
     }
 
     /**
-    * Check one role
-    * @param string $role
-    */
+     * Check one role
+     * @param string $role
+     */
     public function hasRole($role)
     {
         return null !== $this->roles()->where('name', $role)->first();

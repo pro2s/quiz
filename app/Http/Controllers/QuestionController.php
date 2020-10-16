@@ -83,7 +83,8 @@ class QuestionController extends Controller
     {
         $data = $request->validated();
         $question->update($data);
-        return redirect()->route('questions.edit', [$question]);
+
+        return $this->redirectToEdit($question);
     }
 
     /**
@@ -107,6 +108,7 @@ class QuestionController extends Controller
     {
         $question->active = !$question->active;
         $question->save();
+
         return Response::make('', "200");
     }
 
@@ -117,14 +119,16 @@ class QuestionController extends Controller
      */
     public function search(Request  $request)
     {
+        $activeQuestions = Question::where('active', true);
+
         $text = $request->get('text', false);
         if ($text) {
-            return Question::where('active', true)->where('title', 'like', '%'. $text.'%')->get();
-        } else {
-            return Question::where('active', true)->get();
+            $activeQuestions->where('title', 'like', '%'. $text.'%');
         }
+
+        return $activeQuestions->get();
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -136,7 +140,8 @@ class QuestionController extends Controller
     {
         $answer->correct = !$answer->correct;
         $answer->save();
-        return redirect()->route('questions.edit', [$question]);
+
+        return $this->redirectToEdit($question);
     }
 
         /**
@@ -185,6 +190,15 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function storeAnswer(Request $request, Question $question)
+    {
+        return $this->redirectToEdit($question);
+    }
+
+    /**
+     * @param  \App\Question $question
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToEdit(Question $question)
     {
         return redirect()->route('questions.edit', [$question]);
     }
