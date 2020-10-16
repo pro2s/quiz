@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class QuizRequest extends FormRequest
@@ -26,19 +27,15 @@ class QuizRequest extends FormRequest
         return [
             'name' => 'required',
             'image' => 'required',
-            'slug' => 'required|unique:quizzes|max:255',
+            'slug' => [
+                'required',
+                'max:255',
+                Rule::unique('quizzes', 'id'),
+            ],
             'description' => 'required',
             'started_at' => 'nullable|date',
             'active' => 'required',
             'ended_at' => 'nullable|date',
         ];
-    }
-
-    protected function getValidatorInstance()
-    {
-        $data = $this->all();
-        $data['active'] = $this->has('active');
-        $this->getInputSource()->replace($data);
-        return parent::getValidatorInstance();
     }
 }

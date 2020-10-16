@@ -10,7 +10,8 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "stats": "cross-env NODE_ENV=stats node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "postinstall": "if [ $BUILD_ASSETS ]; then npm run production; fi"
+    "postinstall": "node if-env-run.js BUILD_ASSETS production",
+    "test": "cross-env NODE_ENV=stats if-env-run.js BUILD_ASSETS production"
   },
   "devDependencies": {
     "@websanova/vue-auth": "^2.21.14-beta",

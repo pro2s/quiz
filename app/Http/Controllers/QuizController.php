@@ -133,6 +133,4 @@ class QuizController extends Controller
     {
         // TODO Add question
     }
-
-
 }

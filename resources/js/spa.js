@@ -25,7 +25,7 @@ Vue.use(ModalDialogs);
 Vue.use(Notifications);
 Vue.use(vueTopprogress);
 
-import Navigation from './components/Navigation.vue'
+import Navigation from '@/components/Navigation.vue';
 import router from './router'
 import store from './store'
 

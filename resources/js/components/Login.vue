@@ -32,7 +32,7 @@
     </base-modal>
 </template>
 <script>
-import BaseModal from "./BaseModal.vue";
+import BaseModal from "@/components/modals/BaseModal.vue";
 export default {
     components: {
         BaseModal

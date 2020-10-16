@@ -30,6 +30,7 @@
             <textarea class="form-control @iiclass('description')" name="description" id="description" rows="3">{{ $quiz->description }}</textarea>
         </div>
         <div class="custom-control custom-checkbox">
+            <input type="hidden" name="active" value="0">
             <input type="checkbox" class="custom-control-input" name="active" id="active" {{ $quiz->active ? 'checked="checked"' : '' }}>
             <label class="custom-control-label" for="active">{{ __('Active') }}</label>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Answer;
 use App\Http\Requests\QuestionRequest;
 
 use Illuminate\Http\Request;
@@ -63,7 +64,7 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function edit(Question $question)
@@ -75,7 +76,7 @@ class QuestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\QuestionRequest $request
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function update(QuestionRequest $request, Question $question)
@@ -88,7 +89,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function destroy(Question $question)
@@ -99,7 +100,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question  $question
+     * @param  \App\Question $question
      * @return \Illuminate\Http\Response
      */
     public function toggle(Question $question)
@@ -111,7 +112,7 @@ class QuestionController extends Controller
 
      /**
      * Search a listing of the resource.
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function search(Request  $request)
@@ -122,5 +123,69 @@ class QuestionController extends Controller
         } else {
             return Question::where('active', true)->get();
         }
+    }
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Question  $question
+     * @param  \App\Answer  $answer
+     * @return \Illuminate\Http\Response
+     */
+    public function correct(Question $question, Answer $answer)
+    {
+        $answer->correct = !$answer->correct;
+        $answer->save();
+        return redirect()->route('questions.edit', [$question]);
+    }
+
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Question $question
+     * @param  \App\Answer $answer
+     * @return \Illuminate\Http\Response
+     */
+    public function editAnswer(Question $question, Answer $answer)
+    {
+        return view('admin.questions.edit_answer', compact(['question','answer']));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \App\Question $question
+     * @return \Illuminate\Http\Response
+     */
+    public function createAnswer(Question $question)
+    {
+        $answer = new Answer();
+        $answer->question = $question;
+        return view('admin.questions.edit_answer', compact(['question','answer']));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Question $question
+     * @param  \App\Answer $answer
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAnswer(Request $request, Question $question, Answer $answer)
+    {
+        return redirect()->route('questions.answer.edit', [$question, $answer]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Question $question
+     * @return \Illuminate\Http\Response
+     */
+    public function storeAnswer(Request $request, Question $question)
+    {
+        return redirect()->route('questions.edit', [$question]);
     }
 }
