@@ -6,7 +6,7 @@
 @section('content')
 <div class="card-deck">
     <div class="card">
-        <img class="card-img-top" src="{{ $question->image }}">
+        <img class="card-img-top" src="{{ $question->image }}" alt="Question Image">
         <div class="card-body">
             <h5 class="card-title">{{ $question->title }}</h5>
             <p class="card-text">{{ $question->description }}</p>
@@ -16,6 +16,6 @@
             <li class="list-group-item">{{ $question->slug }}</li>
             <li class="list-group-item">{{ $question->active ? __('Active') : __('Inactive') }}</li>
         </ul>
-    </div>    
+    </div>
 </div>
 @stop

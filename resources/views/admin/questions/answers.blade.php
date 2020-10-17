@@ -1,4 +1,6 @@
-<table class="table">
+<p id="answers-title">Answers</p>
+<table class="table" aria-describedby="answers-title">
+    <caption></caption>
     <thead class="thead-dark">
         <tr>
         <th scope="col">#</th>
@@ -28,7 +30,7 @@
                     @icon("trash")
                 </button>
                 <a class="btn btn-outline-secondary" href="{{ route('questions.answer.correct', [$id, $answer->id]) }}">
-                    @icon("{{ $answer->correct ? 'square' : 'check-square' }}")
+                    @icon($answer->correct ? 'square' : 'check-square')
                 </a>
                 <button class="btn btn-outline-secondary" url="{{ route('answers.toggle', $answer->id) }}" is="active-button" @action="toggleItem" :active="isActive">
                     @icon("power")
