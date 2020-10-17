@@ -15,23 +15,23 @@
         <td>
             @if ($answer->image)
             <button class="btn btn-outline-secondary" @click="viewImage('{{ $answer->image }}')">
-                <em data-feather="image"></em>
+                @icon("image")
             </button>
             @endif
         </td>
         <td class="text-nowrap" slot="actions" slot-scope="{ deleteItem, toggleItem, isActive }">
             <div class="btn-group" role="group" aria-label="Actions">
                 <a class="btn btn-outline-secondary" href="{{ route('questions.answer.edit', [$id, $answer->id]) }}">
-                    <em data-feather="edit-3"></em>
+                    @icon("edit-3")
                 </a>
                 <button class="btn btn-outline-secondary" @click="deleteItem('{{ route('answers.destroy', $answer->id)  }}')">
-                    <em data-feather="trash"></em>
+                    @icon("trash")
                 </button>
                 <a class="btn btn-outline-secondary" href="{{ route('questions.answer.correct', [$id, $answer->id]) }}">
-                    <em data-feather="{{ $answer->correct ? 'square' : 'check-square' }}"></em>
+                    @icon("{{ $answer->correct ? 'square' : 'check-square' }}")
                 </a>
                 <button class="btn btn-outline-secondary" url="{{ route('answers.toggle', $answer->id) }}" is="active-button" @action="toggleItem" :active="isActive">
-                    <em data-feather="power"></em>
+                    @icon("power")
                 </button>
             </div>
         </td>
@@ -40,5 +40,5 @@
     </tbody>
 </table>
 <a class="btn btn-primary" href="{{ route('questions.answer.create', ['question' => $id]) }}">
-    <em data-feather="plus"></em> Add answer
+    @icon("plus") Add answer
 </a>

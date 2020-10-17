@@ -7,7 +7,7 @@
     <button class="btn btn-sm btn-outline-secondary">{{ __('Inactive') }}</button>
 </div>
 <a class="btn btn-sm btn-outline-success" href="{{ route('questions.create') }}">
-    <span data-feather="plus"></span>
+    @icon("plus")
     {{ __('Add') }}
 </a>
 @stop
@@ -32,16 +32,16 @@
         <td class="text-nowrap" slot="actions" slot-scope="{ deleteItem, toggleItem, isActive }">
             <div class="btn-group" role="group" aria-label="Actions">
                 <a class="btn btn-outline-secondary" href="{{route('questions.show', $question->id)}}">
-                    <i data-feather="eye"></i>
+                    @icon("eye")
                 </a>
                 <a class="btn btn-outline-secondary" href="{{ route('questions.edit', $question->id) }}">
-                    <i data-feather="edit-3"></i>
+                    @icon("edit-3")
                 </a>
                 <button class="btn btn-outline-secondary" @click="deleteItem('{{ route('questions.destroy', $question->id)  }}')">
-                    <i data-feather="trash"></i>
+                    @icon("trash")
                 </button>
                 <button class="btn btn-outline-secondary" url="{{ route('questions.toggle', $question->id) }}" is="active-button" @action="toggleItem" :active="isActive">
-                    <i data-feather="power"></i>
+                    @icon("power")
                 </button>
             </div>
         </td>

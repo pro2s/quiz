@@ -2,7 +2,7 @@
 @section('title', 'Answer to Question ' .  $question->title)
 @section('buttons')
 <a class="btn btn-sm btn-outline-secondary mr-2" href="{{ route('questions.edit', $question->id) }}">
-    <span data-feather="corner-left-up"></span>
+    @icon("corner-left-up")
     {{ __('Back') }}
 </a>
 @stop

@@ -32,16 +32,16 @@
         <td class="text-nowrap" slot="actions" slot-scope="{ deleteItem, toggleItem, isActive }">
             <div class="btn-group" role="group" aria-label="Actions">
                 <a class="btn btn-outline-secondary" href="{{route('users.show', $user->id)}}">
-                    <em data-feather="eye"></em>
+                    @icon("eye")
                 </a>
                 <a class="btn btn-outline-secondary" href="{{ route('users.edit', $user->id) }}">
-                    <em data-feather="edit-3"></em>
+                    @icon("edit-3")
                 </a>
                 <button class="btn btn-outline-secondary" @click="deleteItem('{{ route('users.destroy', $user->id)  }}')">
-                    <em data-feather="trash"></em>
+                    @icon("trash")
                 </button>
                 <button class="btn btn-outline-secondary" url="{{ route('users.toggle', $user->id) }}" is="active-button" @action="toggleItem" :active="isActive">
-                    <em data-feather="power"></em>
+                    @icon("power")
                 </button>
             </div>
         </td>

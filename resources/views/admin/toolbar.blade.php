@@ -5,7 +5,7 @@
         <button class="btn btn-sm btn-outline-secondary" aria-label="Export">Export</button>
     </div>
     <button class="btn btn-sm btn-outline-secondary dropdown-toggle" aria-label="Calendar">
-        <span data-feather="calendar"></span>
+        @icon("calendar")
         This week
     </button>
     @show

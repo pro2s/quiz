@@ -31,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('endhaserror', function () {
             return '<?php endif; ?>';
         });
+
+        Blade::directive('icon', function ($expression) {
+            return "<em data-feather=\"<?php echo ($expression) ?>\"></em>";
+        });
     }
 
     /**
