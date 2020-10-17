@@ -6,6 +6,11 @@ addons:
     organization: pro2s-github
     token:
       secure: uc3UTO9OTvP9NboZtZ80EpD7EMC3QcqquOk7BnXJ4mPVQ2vzJt5Gmb2Sr7+MrV2SuGMwj2IcoREDXlIIio8ABV5omar2wwnahhX/mQzP4V78IQcxkfRKB844xAihbn+o8jOUks7bPWSuOBuMsPXtv8AGtvk+XR7w+e91g9nImxQSbIRbStY37dJc4haRJB0wtxnlLIk3UP6kvxrL2/WFWRiyWmolLshEb6zssBaZ1JICMnLnPBMDfXE8zM9wygkoeQ+W287j5P/JuupqE1jJEs8Tol6oEW7/f9jEpOQRdT7q08UhUiu414ShVwqNZ++R6xE3AYO+T6zN0s21wiJqaFcpI2srq9mQP0tqxYueFHe709+tIVPpDCfbZwd0bBR+HLauZNEBWWauYY/H4tHBROsPrSlCQ/JQ4MhKmXsfv8r8y+q/JWDjAOXkrG93vdKBgdX8r2TYuj4Xl9VWl73hDGBOsEQnbafwEVoU7KjMWa/ArDA5ep4DKyYGatwdKxp/VaeIsE+Lby3RHH7GYsYzdfrOzz23Am6SxyIjlo1xYj6GZaCYB4pt9rw0zQQGZI+Fk/oYQ2l6nd1ivcsgjAmse7vwhbyiqtf57cddDkMz/gddz3EhT95CWIxKn3jJqFTLutpsMnvKtn53AddUE6Ofh/vZ1WrlbH/CsbrloMl013c=
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+
 script:
   - composer ci-check-style
   - sonar-scanner
