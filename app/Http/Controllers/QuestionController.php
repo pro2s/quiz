@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
-use App\Question;
-use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
-use Illuminate\Support\Facades\Response;
+use App\Question;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class QuestionController extends Controller
 {
