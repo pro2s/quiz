@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Question;
 use App\Answer;
 use App\Http\Requests\QuestionRequest;
-
+use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Log;
 
 class QuestionController extends Controller
 {
@@ -20,6 +18,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::paginate(15);
+
         return view('admin.questions.index', compact('questions'));
     }
 
@@ -31,6 +30,7 @@ class QuestionController extends Controller
     public function create()
     {
         $question = new Question();
+
         return view('admin.questions.edit', compact('question'));
     }
 
@@ -47,6 +47,7 @@ class QuestionController extends Controller
         $question = new Question();
         $question->fill($data);
         $question->save();
+
         return redirect()->route('questions.show', [$question]);
     }
 
@@ -109,21 +110,21 @@ class QuestionController extends Controller
         $question->active = !$question->active;
         $question->save();
 
-        return Response::make('', "200");
+        return Response::make('', '200');
     }
 
-     /**
+    /**
      * Search a listing of the resource.
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function search(Request  $request)
+    public function search(Request $request)
     {
         $activeQuestions = Question::where('active', true);
 
         $text = $request->get('text', false);
         if ($text) {
-            $activeQuestions->where('title', 'like', '%'. $text.'%');
+            $activeQuestions->where('title', 'like', '%' . $text . '%');
         }
 
         return $activeQuestions->get();
@@ -144,7 +145,7 @@ class QuestionController extends Controller
         return $this->redirectToEdit($question);
     }
 
-        /**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Question $question
@@ -153,7 +154,7 @@ class QuestionController extends Controller
      */
     public function editAnswer(Question $question, Answer $answer)
     {
-        return view('admin.questions.edit_answer', compact(['question','answer']));
+        return view('admin.questions.edit_answer', compact(['question', 'answer']));
     }
 
     /**
@@ -166,7 +167,8 @@ class QuestionController extends Controller
     {
         $answer = new Answer();
         $answer->question = $question;
-        return view('admin.questions.edit_answer', compact(['question','answer']));
+
+        return view('admin.questions.edit_answer', compact(['question', 'answer']));
     }
 
     /**

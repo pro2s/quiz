@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Quiz;
-use App\Question;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Question;
+use App\Quiz;
 
 class QuizController extends Controller
 {
@@ -18,7 +17,7 @@ class QuizController extends Controller
     {
         $quiz = Quiz::where('slug', $slug)
             ->where('active', true)
-            ->with(['questions' => function($query) {
+            ->with(['questions' => function ($query) {
                 return $query->where('active', true)->with('answers:id,question_id,answer');
             }])
             ->first();
@@ -34,7 +33,7 @@ class QuizController extends Controller
 
         $quiz = Quiz::where('slug', $slug)
             ->where('active', true)
-            ->with(['questions' => function($query) {
+            ->with(['questions' => function ($query) {
                 return $query->where('active', true)->with('answers:id,question_id,answer');
             }])
             ->first();

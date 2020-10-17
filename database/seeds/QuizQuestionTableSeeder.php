@@ -1,7 +1,7 @@
 <?php
 
-use App\Quiz;
 use App\Question;
+use App\Quiz;
 use Illuminate\Database\Seeder;
 
 class QuizQuestionTableSeeder extends Seeder
@@ -13,7 +13,7 @@ class QuizQuestionTableSeeder extends Seeder
      */
     public function run()
     {
-        $quizzes =Quiz::where('active', true)
+        $quizzes = Quiz::where('active', true)
             ->take(3)
             ->get();
 

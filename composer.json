@@ -17,7 +17,8 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.0",
+        "matt-allan/laravel-code-style": "^0.5.0"
     },
     "autoload": {
         "classmap": [
@@ -49,6 +50,18 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "pre-push": [
+            "@ci-check-style"
+        ],
+        "ci-check-style": [
+            "php-cs-fixer fix -v --allow-risky=yes --dry-run --diff --diff-format=udiff --stop-on-violation --show-progress=estimating"
+        ],
+        "check-style": [
+            "php-cs-fixer fix --dry-run --diff"
+        ],
+        "fix-style": [
+            "php-cs-fixer fix"
         ]
     },
     "config": {

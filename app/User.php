@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -52,7 +52,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-     * Check multiple roles
+     * Check multiple roles.
      * @param array $roles
      */
     public function hasAnyRole($roles)
@@ -61,7 +61,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-     * Check one role
+     * Check one role.
      * @param string $role
      */
     public function hasRole($role)

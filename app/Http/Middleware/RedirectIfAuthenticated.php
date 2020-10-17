@@ -21,6 +21,7 @@ class RedirectIfAuthenticated
             if (Auth::user()->hasAnyRole(['admin', 'moderator', 'editor'])) {
                 return '/admin';
             }
+
             return '/account';
         }
 

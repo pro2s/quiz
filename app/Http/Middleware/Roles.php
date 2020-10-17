@@ -20,6 +20,7 @@ class Roles
             return $next($request);
         }
         $message = 'This action is unauthorized.';
+
         return $request->expectsJson()
             ? response()->json(['message' => $message], 401)
             : redirect('account');

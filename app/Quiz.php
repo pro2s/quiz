@@ -12,11 +12,11 @@ class Quiz extends Model
      * @var array
      */
     protected $hidden = [
-        'id', 'created_at', 'updated_at'
+        'id', 'created_at', 'updated_at',
     ];
 
     protected $fillable = [
-        'name', 'slug', 'image', 'description', 'active' ,'started_at', 'ended_at'
+        'name', 'slug', 'image', 'description', 'active', 'started_at', 'ended_at',
     ];
 
     protected $appends = ['is_finished', 'question'];

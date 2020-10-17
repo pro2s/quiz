@@ -7,7 +7,7 @@ class QuestionTableSeeder extends Seeder
 {
     public static function getQuestions()
     {
-        return array(
+        return [
             'one' => 'Ut et lorem eget libero gravida elementum ?',
             'two' => 'Quisque semper est sed magna cursus blandit ?',
             'three' => 'Phasellus commodo ex in pharetra efficitur ?',
@@ -18,7 +18,7 @@ class QuestionTableSeeder extends Seeder
             'eight' => 'Donec ac velit aliquet, consectetur eros a, ornare augue ?',
             'nine' => 'Vivamus varius diam sit amet urna rutrum porta ?',
             'ten' => 'Aliquam ac dolor a lacus venenatis condimentum a eget arcu ?',
-        );
+        ];
     }
 
     /**

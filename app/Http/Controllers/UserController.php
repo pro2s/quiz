@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -16,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(15);
+
         return view('admin.users.index', ['users' => $users]);
     }
 
@@ -89,7 +90,6 @@ class UserController extends Controller
         //
     }
 
-
     /**
      * Toggle active state the specified resource from storage.
      *
@@ -98,6 +98,6 @@ class UserController extends Controller
      */
     public function toggle(User $user)
     {
-        return Response::make('', "200");
+        return Response::make('', '200');
     }
 }

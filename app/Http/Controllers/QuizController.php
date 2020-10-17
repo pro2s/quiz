@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Quiz;
-use App\Question;
 use App\Http\Requests\QuizRequest;
-
-use Illuminate\Http\Request;
+use App\Question;
+use App\Quiz;
 use Illuminate\Support\Facades\Response;
 
 class QuizController extends Controller
@@ -112,7 +110,7 @@ class QuizController extends Controller
         $quiz->active = !$quiz->active;
         $quiz->save();
 
-        return Response::make('', "200");
+        return Response::make('', '200');
     }
 
     /**
@@ -126,7 +124,6 @@ class QuizController extends Controller
     {
         // TODO: Delete quiestion from quiz
     }
-
 
     /**
      * Remove the specified resource from storage.

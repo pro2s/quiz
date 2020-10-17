@@ -14,7 +14,7 @@ class AnswerTableSeeder extends Seeder
     public function run()
     {
         $questions = array_keys(QuestionTableSeeder::getQuestions());
-        $answers = array('A', 'B', 'C');
+        $answers = ['A', 'B', 'C'];
         foreach ($questions as $index => $slug) {
             $question = Question::where('slug', 'question-' . $slug)->first();
             $correct = $index % count($answers);
