@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Answer;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -19,7 +20,7 @@ class AnswerController extends Controller
         $id = $request->input('id', null);
         $answer = Answer::where('id', $id)
                 ->where('active', true)
-                ->with(['question.quizzes' => function ($query) use ($quiz) {
+                ->with(['question.quizzes' => function (Builder $query) use ($quiz): Builder {
                     return $query->where('slug', $quiz);
                 }])
                 ->first();

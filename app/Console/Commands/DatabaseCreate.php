@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
+/** @psalm-suppress PropertyNotSetInConstructor */
 class DatabaseCreate extends Command
 {
     /**

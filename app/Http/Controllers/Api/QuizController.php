@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Quiz;
-use App\Question;
-use App\Http\Controllers\Controller;
 use App\Contracts\Quiz as QuizContract;
+use App\Http\Controllers\Controller;
+use App\Question;
+use App\Quiz;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder;
 
 class QuizController extends Controller
 {
@@ -23,7 +23,6 @@ class QuizController extends Controller
 
     /**
      * @return Collection
-     *
      */
     public function index(): Collection
     {
@@ -34,7 +33,7 @@ class QuizController extends Controller
     {
         $quiz = Quiz::where('slug', $slug)
             ->where('active', true)
-            ->with(['questions' => function ($query) {
+            ->with(['questions' => function (Builder $query): Builder {
                 return $query->where('active', true)->with('answers:id,question_id,answer');
             }])
             ->first();

@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -45,7 +44,7 @@ class Quiz extends Model
         return $this->belongsToMany(Question::class)->withTimestamps();
     }
 
-    public function createSlug($lenght = self::SLUG_LENGTH): string
+    public function createSlug(int $lenght = self::SLUG_LENGTH): string
     {
         return bin2hex(random_bytes($lenght));
     }

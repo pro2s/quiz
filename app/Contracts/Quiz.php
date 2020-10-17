@@ -6,5 +6,5 @@ use App\Question;
 
 interface Quiz
 {
-    public function getNextQuestionBySlugs($quizSlug, $questionSlug): ?Question;
+    public function getNextQuestionBySlugs(?string $quizSlug, ?string $questionSlug): ?Question;
 }
