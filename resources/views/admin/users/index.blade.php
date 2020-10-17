@@ -8,7 +8,7 @@
 </div>
 @stop
 @section('content')
-<table class="table">
+<table class="table" aria-describedby="main-title">
     <thead class="thead-dark">
         <tr>
         <th scope="col">{{ __('Id') }}</th>

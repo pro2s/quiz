@@ -12,7 +12,7 @@
 </a>
 @stop
 @section('content')
-<table class="table">
+<table class="table" aria-describedby="main-title">
     <thead class="thead-dark">
         <tr>
         <th scope="col">{{ __('Id') }}</th>
@@ -24,7 +24,7 @@
     </thead>
     <tbody>
     @foreach ($questions as $question)
-        <tr is="action-row" {{ $question->active ? 'active' : '' }}> 
+        <tr is="action-row" {{ $question->active ? 'active' : '' }}>
         <th scope="row">{{ $question->id }}</th>
         <td class="text-nowrap">{{ $question->slug }}</td>
         <td>{{ $question->title }}</td>
@@ -46,7 +46,7 @@
             </div>
         </td>
         </tr>
-    @endforeach                    
+    @endforeach
     </tbody>
 </table>
 @endsection
