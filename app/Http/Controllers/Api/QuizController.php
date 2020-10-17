@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Contracts\Quiz as QuizContract;
-use App\Http\Controllers\Controller;
-use App\Question;
 use App\Quiz;
+use App\Question;
+use App\Http\Controllers\Controller;
+use App\Contracts\Quiz as QuizContract;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 class QuizController extends Controller
 {
@@ -19,12 +21,16 @@ class QuizController extends Controller
         $this->quizes = $quizes;
     }
 
-    public function index()
+    /**
+     * @return Collection
+     *
+     */
+    public function index(): Collection
     {
         return Quiz::where('active', true)->get();
     }
 
-    public function show($slug)
+    public function show($slug): ?Quiz
     {
         $quiz = Quiz::where('slug', $slug)
             ->where('active', true)
@@ -43,7 +49,12 @@ class QuizController extends Controller
         return $quiz;
     }
 
-    public function next($quizSlug, $questionSlug)
+    /**
+     * @return (Question|bool|null)[]
+     *
+     * @psalm-return array{question: Question|null, finished: bool}
+     */
+    public function next($quizSlug, $questionSlug): array
     {
         $nextQuestion = $this->quizes->getNextQuestionBySlugs($quizSlug, $questionSlug);
 

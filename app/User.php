@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -28,7 +29,12 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-    public function roles()
+    /**
+     * @return BelongsToMany
+     *
+     * @psalm-return BelongsToMany<Role>
+     */
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }
@@ -53,9 +59,12 @@ class User extends Authenticatable implements JWTSubject
 
     /**
      * Check multiple roles.
+     *
      * @param string|array $roles
+     *
+     * @return bool
      */
-    public function hasAnyRole($roles)
+    public function hasAnyRole($roles): bool
     {
         return \is_array($roles)
             && null !== $this->roles()->whereIn('name', $roles)->first();
@@ -63,15 +72,23 @@ class User extends Authenticatable implements JWTSubject
 
     /**
      * Check one role.
+     *
      * @param string|array $role
+     *
+     * @return bool
      */
-    public function hasRole($role)
+    public function hasRole($role): bool
     {
         return \is_string($role)
             && null !== $this->roles()->where('name', $role)->first();
     }
 
-    public function quizzes()
+    /**
+     * @return BelongsToMany
+     *
+     * @psalm-return BelongsToMany<Quiz>
+     */
+    public function quizzes(): BelongsToMany
     {
         return $this->belongsToMany(Quiz::class)->using(UserQuiz::class);
     }
