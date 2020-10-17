@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,10 +14,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::if('roles', function ($roles) {
-            return Auth::check() && Auth::user()->hasAnyRole($roles);
-        });
-
         Blade::directive('iiclass', function ($field) {
             return '<?php echo $errors->has(' . $field . ') ? "is-invalid" : ""; ?>';
         });
@@ -43,6 +38,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            \App\Contracts\Quiz::class,
+            \App\Repositories\QuizRepository::class
+        );
     }
 }

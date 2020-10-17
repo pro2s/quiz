@@ -17,14 +17,14 @@ class AnswerController extends Controller
     public function send(Request $request, $quiz, $question)
     {
         $id = $request->input('id', null);
-        if ($id) {
-            $answer = Answer::where('id', $id)
+        $answer = Answer::where('id', $id)
                 ->where('active', true)
                 ->with(['question.quizzes' => function ($query) use ($quiz) {
                     return $query->where('slug', $quiz);
                 }])
                 ->first();
 
+        if ($id && $answer) {
             return response()->json(['answer' => $answer->correct]);
         } else {
             return response()->json(['error' => __('Error')], 400);

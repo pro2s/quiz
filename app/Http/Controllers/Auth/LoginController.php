@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class LoginController extends Controller
 {
@@ -28,7 +29,7 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
-        if (Auth::check() && Auth::user()->hasAnyRole(['admin', 'moderator', 'editor'])) {
+        if (Auth::check() && Gate::allows('use-dashboard')) {
             return '/admin';
         }
 

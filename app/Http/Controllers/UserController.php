@@ -98,6 +98,6 @@ class UserController extends Controller
      */
     public function toggle(User $user)
     {
-        return Response::make('', '200');
+        return Response::make('');
     }
 }

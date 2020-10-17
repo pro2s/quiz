@@ -42,7 +42,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function authorizeRoles($roles): bool
     {
-        $result = (is_array($roles) && $this->hasAnyRole($roles)) || $this->hasRole($roles);
+        $result = $this->hasAnyRole($roles) || $this->hasRole($roles);
 
         if (!$result) {
             abort(401, 'This action is unauthorized.');
@@ -53,20 +53,22 @@ class User extends Authenticatable implements JWTSubject
 
     /**
      * Check multiple roles.
-     * @param array $roles
+     * @param string|array $roles
      */
     public function hasAnyRole($roles)
     {
-        return null !== $this->roles()->whereIn('name', $roles)->first();
+        return \is_array($roles)
+            && null !== $this->roles()->whereIn('name', $roles)->first();
     }
 
     /**
      * Check one role.
-     * @param string $role
+     * @param string|array $role
      */
     public function hasRole($role)
     {
-        return null !== $this->roles()->where('name', $role)->first();
+        return \is_string($role)
+            && null !== $this->roles()->where('name', $role)->first();
     }
 
     public function quizzes()

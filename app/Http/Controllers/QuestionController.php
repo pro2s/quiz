@@ -111,7 +111,7 @@ class QuestionController extends Controller
         $question->active = !$question->active;
         $question->save();
 
-        return Response::make('', '200');
+        return Response::make('');
     }
 
     /**
@@ -167,7 +167,7 @@ class QuestionController extends Controller
     public function createAnswer(Question $question)
     {
         $answer = new Answer();
-        $answer->question = $question;
+        $answer->question()->associate($question);
 
         return view('admin.questions.edit_answer', compact(['question', 'answer']));
     }

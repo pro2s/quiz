@@ -110,7 +110,7 @@ class QuizController extends Controller
         $quiz->active = !$quiz->active;
         $quiz->save();
 
-        return Response::make('', '200');
+        return Response::make('');
     }
 
     /**

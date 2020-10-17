@@ -18,7 +18,7 @@ class AnswerController extends Controller
         $answer->active = !$answer->active;
         $answer->save();
 
-        return Response::make('', '200');
+        return Response::make('');
     }
 
     /**
