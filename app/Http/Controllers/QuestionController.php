@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
-use App\Http\Requests\QuestionRequest;
 use App\Question;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionRequest;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Database\Eloquent\Collection;
 
 class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -25,7 +26,7 @@ class QuestionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -37,8 +38,8 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\QuestionRequest $request
-     * @return \Illuminate\Http\Response
+     * @param QuestionRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(QuestionRequest $request)
     {
@@ -54,8 +55,8 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
+     * @param Question  $question
+     * @return \Illuminate\View\View
      */
     public function show(Question $question)
     {
@@ -65,8 +66,8 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @param Question $question
+     * @return \Illuminate\View\View
      */
     public function edit(Question $question)
     {
@@ -76,9 +77,9 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\QuestionRequest $request
-     * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @param QuestionRequest $request
+     * @param Question $question
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(QuestionRequest $request, Question $question)
     {
@@ -91,8 +92,8 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @param Question $question
+     * @return \Illuminate\Http\Response|void
      */
     public function destroy(Question $question)
     {
@@ -102,7 +103,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question $question
+     * @param Question $question
      * @return \Illuminate\Http\Response
      */
     public function toggle(Question $question)
@@ -115,8 +116,8 @@ class QuestionController extends Controller
 
     /**
      * Search a listing of the resource.
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return Collection
      */
     public function search(Request $request)
     {
@@ -133,9 +134,9 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question  $question
-     * @param  \App\Answer  $answer
-     * @return \Illuminate\Http\Response
+     * @param Question  $question
+     * @param Answer  $answer
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function correct(Question $question, Answer $answer)
     {
@@ -148,9 +149,9 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Question $question
-     * @param  \App\Answer $answer
-     * @return \Illuminate\Http\Response
+     * @param Question $question
+     * @param Answer $answer
+     * @return \Illuminate\View\View
      */
     public function editAnswer(Question $question, Answer $answer)
     {
@@ -160,8 +161,8 @@ class QuestionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @param Question $question
+     * @return \Illuminate\View\View
      */
     public function createAnswer(Question $question)
     {
@@ -174,10 +175,10 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Question $question
-     * @param  \App\Answer $answer
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request  $request
+     * @param Question $question
+     * @param Answer $answer
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function updateAnswer(Request $request, Question $question, Answer $answer)
     {
@@ -187,9 +188,9 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request  $request
+     * @param Question $question
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function storeAnswer(Request $request, Question $question)
     {
@@ -197,8 +198,8 @@ class QuestionController extends Controller
     }
 
     /**
-     * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @param Question $question
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function redirectToEdit(Question $question)
     {
