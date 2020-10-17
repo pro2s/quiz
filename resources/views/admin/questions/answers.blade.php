@@ -1,22 +1,22 @@
 <table class="table">
     <thead class="thead-dark">
         <tr>
-        <th scope="col">#</th>
-        <th scope="col" width="70%">Answer</th>
-        <th scope="col">Image</th>
-        <th scope="col">Actions</th>
+        <th>#</th>
+        <th class="w-75">Answer</th>
+        <th>Image</th>
+        <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     @foreach ($answers as $answer)
-        <tr is="action-row" {{ $answer->active ? 'active' : '' }}> 
-        <th scope="row">{{ $answer->id }}</th>
+        <tr is="action-row" {{ $answer->active ? 'active' : '' }}>
+        <th>{{ $answer->id }}</th>
         <td>{{ $answer->answer }}</td>
         <td>
             @if ($answer->image)
             <button class="btn btn-outline-secondary" @click="viewImage('{{ $answer->image }}')">
                 <i data-feather="image"></i>
-            </button>    
+            </button>
             @endif
         </td>
         <td class="text-nowrap" slot="actions" slot-scope="{ deleteItem, toggleItem, isActive }">
@@ -36,7 +36,7 @@
             </div>
         </td>
         </tr>
-    @endforeach                    
+    @endforeach
     </tbody>
 </table>
 <a class="btn btn-primary" href="{{ route('questions.answer.create', ['question' => $id]) }}">

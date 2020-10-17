@@ -13,18 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(
-    [
-        'middleware' => 'api',
-        'prefix' => 'auth'
-    ],
-    function ($router) {
-        Route::post('login', 'Api\AuthController@login');
-        Route::post('logout', 'Api\AuthController@logout');
-        Route::get('refresh', 'Api\AuthController@refresh');
-        Route::get('user', 'Api\AuthController@user');
-    }
-);
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('logout', 'Api\AuthController@logout');
+    Route::get('refresh', 'Api\AuthController@refresh');
+    Route::get('user', 'Api\AuthController@user');
+});
 
 Route::get('quizzes', 'Api\QuizController@index');
 Route::get('quiz/{slug}', 'Api\QuizController@show');

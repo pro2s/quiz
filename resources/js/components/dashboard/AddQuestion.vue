@@ -7,19 +7,19 @@
             :inputProps="inputProps"
             :sectionConfigs="sectionConfigs"
             :getSuggestionValue="getSuggestionValue"
-              >  
+              >
             <template slot-scope="{suggestion}">
                 <span class="my-suggestion-item">{{suggestion.item.title}}</span>
             </template>
         </vue-autosuggest>
     </slot>
-    
+
     <div v-if="selected">
-         <slot :selected="selected" name="selected"> 
+         <slot :selected="selected" name="selected">
             You have selected:
             <code><pre>{{JSON.stringify(selected, null, 4)}}</pre></code>
          </slot>
-    </div>  
+    </div>
   </div>
 </template>
 
@@ -86,7 +86,7 @@ export default {
       return image.title;
     },
     getSuggestionValue(suggestion) {
-      let { name, item } = suggestion;
+      const { item } = suggestion;
       return item.title;
     }
   }

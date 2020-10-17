@@ -13,7 +13,7 @@ class QuizController extends Controller
     {
         return Quiz::where('active', true)->get();
     }
-    
+
     public function show($slug)
     {
         $quiz = Quiz::where('slug', $slug)
@@ -22,7 +22,7 @@ class QuizController extends Controller
                 return $query->where('active', true)->with('answers:id,question_id,answer');
             }])
             ->first();
-        
+
         // TODO: get current question for user
 
         return $quiz->makeHidden('questions');
@@ -30,9 +30,8 @@ class QuizController extends Controller
 
     public function next($slug, $questionSlug)
     {
-        // TODO: try to use this to get next qyestion $next = User::where('id', '>', $user->id)->min('id');
         $question = Question::where('slug', $questionSlug)->first();
-        
+
         $quiz = Quiz::where('slug', $slug)
             ->where('active', true)
             ->with(['questions' => function($query) {
@@ -42,13 +41,13 @@ class QuizController extends Controller
 
         $next = false;
         $nextQuestion = null;
-        
+
         foreach ($quiz->questions as $question) {
-            if ($next) { 
+            if ($next) {
                 $nextQuestion = $question;
                 break;
             }
-            $next = $question->slug == $questionSlug;
+            $next = $question->slug === $questionSlug;
         }
 
         return ['question' => $nextQuestion, 'finished' => $nextQuestion === null];

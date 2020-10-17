@@ -24,11 +24,6 @@ class QuizQuestionTableSeeder extends Seeder
         foreach ($quizzes as $quiz) {
             $quizQuestions = $questions->random(5);
             $quiz->questions()->saveMany($quizQuestions);
-            /*
-            foreach ($quizQuestions as $question) {
-                $quiz->questions()->attach($question);
-            }
-            */
         }
     }
 }

@@ -27,7 +27,8 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('admin.users.edit', compact('quiz'));
+
+        return $this->edit($user);
     }
 
     /**
@@ -39,6 +40,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
+
         return redirect()->route('users.show', [$user]);
     }
 
@@ -87,7 +89,7 @@ class UserController extends Controller
         //
     }
 
-    
+
     /**
      * Toggle active state the specified resource from storage.
      *

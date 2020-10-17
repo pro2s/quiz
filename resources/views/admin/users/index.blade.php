@@ -11,18 +11,18 @@
 <table class="table">
     <thead class="thead-dark">
         <tr>
-        <th scope="col">{{ __('Id') }}</th>
-        <th scope="col">{{ __('Role') }}</th>
-        <th scope="col">{{ __('Name') }}</th>
-        <th scope="col">{{ __('Email') }}</th>
-        <th scope="col">{{ __('Action') }}</th>
+        <th>{{ __('Id') }}</th>
+        <th>{{ __('Role') }}</th>
+        <th>{{ __('Name') }}</th>
+        <th>{{ __('Email') }}</th>
+        <th>{{ __('Action') }}</th>
         </tr>
     </thead>
     <tbody>
     @foreach ($users as $user)
-        <tr is="action-row" active> 
-        <th scope="row">{{ $user->id }}</th>
-        <td scope="row">
+        <tr is="action-row" active>
+        <th>{{ $user->id }}</th>
+        <td>
             @foreach ($user->roles as $role)
                 <span class="badge badge-dark">{{ $role->name }}</span>
             @endforeach

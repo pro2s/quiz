@@ -19,6 +19,7 @@ class QuizController extends Controller
     public function index()
     {
         $quizzes = Quiz::paginate(15);
+
         return view('admin.quizzes.index', ['quizzes' => $quizzes]);
     }
 
@@ -30,6 +31,7 @@ class QuizController extends Controller
     public function create()
     {
         $quiz = new Quiz();
+
         return view('admin.quizzes.edit', compact('quiz'));
     }
 
@@ -45,6 +47,7 @@ class QuizController extends Controller
         $data = $request->validated();
         $quiz->fill($data);
         $quiz->save();
+
         return redirect()->route('quizzes.show', [$quiz]);
     }
 
@@ -57,6 +60,7 @@ class QuizController extends Controller
     public function show(Quiz $quiz)
     {
         $questions = $quiz->questions;
+
         return view('admin.quizzes.show', compact('quiz', 'questions'));
     }
 
@@ -82,6 +86,7 @@ class QuizController extends Controller
     {
         $data = $request->validated();
         $quiz->update($data);
+
         return redirect()->route('quizzes.edit', [$quiz]);
     }
 
@@ -93,9 +98,9 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        // TODO Delete quiz
+        // TODO: Delete quiz
     }
-    
+
     /**
      * Toggle active state the specified resource from storage.
      *
@@ -106,6 +111,7 @@ class QuizController extends Controller
     {
         $quiz->active = !$quiz->active;
         $quiz->save();
+
         return Response::make('', "200");
     }
 
@@ -118,7 +124,7 @@ class QuizController extends Controller
      */
     public function deleteQuestion(Quiz $quiz, Question $question)
     {
-        // TODO Delete quiestion from quiz
+        // TODO: Delete quiestion from quiz
     }
 
 
@@ -131,6 +137,6 @@ class QuizController extends Controller
      */
     public function addQuestion(Quiz $quiz, Question $question)
     {
-        // TODO Add question
+        // TODO: Add question
     }
 }

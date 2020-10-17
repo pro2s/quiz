@@ -4,13 +4,7 @@
 @include('admin.partials.buttons', ['id' => $user->id, 'route' => 'users', 'exists' => $user->exists, 'isEdit' => true])
 @stop
 @section('content')
-@if( $user->exists )
-<form method="post" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
-    @method('PUT')
-@else
-<form method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
-@endif
-    @csrf
+@component('partials.form', ['entity' => $user, 'update' => 'users.update', 'store' => 'users.store'])
     <div class="form-group">
         <label for="name">{{ __('Name') }}</label>
         <input type="text" class="form-control @iiclass('name')" name="name" id="name" value="{{ $user->name ?? old('name') }}" placeholder="{{ __('Enter name') }}">
@@ -21,5 +15,5 @@
         <label class="custom-control-label" for="active">{{ __('Active') }}</label>
     </div>
     <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-</form>
+@endcomponent
 @stop
