@@ -12,7 +12,10 @@ class AnswerController extends Controller
 {
     /**
      * Search a listing of the resource.
-     * @param  \Illuminate\Http\Request  $request
+     * @param string $quiz
+     * @param string $question
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function send(Request $request, $quiz, $question)

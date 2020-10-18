@@ -29,26 +29,18 @@ class QuizController extends Controller
         return Quiz::where('active', true)->get();
     }
 
+    /**
+     * @param string $slug
+     */
     public function show($slug): ?Quiz
     {
-        $quiz = Quiz::where('slug', $slug)
-            ->where('active', true)
-            ->with(['questions' => function (Builder $query): Builder {
-                return $query->where('active', true)->with('answers:id,question_id,answer');
-            }])
-            ->first();
-
-        if ($quiz) {
-            $quiz->makeHidden('questions');
-        } else {
-            abort(404);
-        }
-        // TODO: get current question for user
-
-        return $quiz;
+        return $this->quizes->getQuizBySlug($slug)->makeHidden('questions');
     }
 
     /**
+     * @param string $quizSlug
+     * @param string $questionSlug
+     *
      * @return (Question|bool|null)[]
      *
      * @psalm-return array{question: Question|null, finished: bool}

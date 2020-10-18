@@ -67,7 +67,7 @@ class User extends Authenticatable implements JWTSubject
     public function hasAnyRole($roles): bool
     {
         return \is_array($roles)
-            && null !== $this->roles()->whereIn('name', $roles)->first();
+            && $this->roles()->whereIn('name', $roles)->count() > 0;
     }
 
     /**
@@ -80,7 +80,7 @@ class User extends Authenticatable implements JWTSubject
     public function hasRole($role): bool
     {
         return \is_string($role)
-            && null !== $this->roles()->where('name', $role)->first();
+            && $this->roles()->where('name', $role)->count() > 0;
     }
 
     /**
