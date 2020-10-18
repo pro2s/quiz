@@ -56,6 +56,9 @@
         "pre-push": [
             "@ci-check-style"
         ],
+        "ci-analysis": [
+            "psalm -m"
+        ],
         "ci-check-style": [
             "php-cs-fixer fix -v --allow-risky=yes --dry-run --diff --diff-format=udiff --stop-on-violation --show-progress=estimating"
         ],

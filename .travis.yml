@@ -18,4 +18,5 @@ before_script:
 
 script:
   - composer ci-check-style
+  - composer ci-analysis
   - sonar-scanner
