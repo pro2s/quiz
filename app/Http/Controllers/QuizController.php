@@ -12,7 +12,7 @@ class QuizController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -24,7 +24,7 @@ class QuizController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -36,8 +36,8 @@ class QuizController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\QuizRequest $request
-     * @return \Illuminate\Http\Response
+     * @param  QuizRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(QuizRequest $request)
     {
@@ -53,7 +53,7 @@ class QuizController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Quiz  $quiz
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function show(Quiz $quiz)
     {
@@ -66,7 +66,7 @@ class QuizController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Quiz  $quiz
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function edit(Quiz $quiz)
     {
@@ -76,9 +76,9 @@ class QuizController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\QuizRequest $request
-     * @param  \App\Quiz $quiz
-     * @return \Illuminate\Http\Response
+     * @param  QuizRequest $request
+     * @param  Quiz $quiz
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(QuizRequest $request, Quiz $quiz)
     {
@@ -92,7 +92,7 @@ class QuizController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Quiz  $quiz
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|void
      */
     public function destroy(Quiz $quiz)
     {
@@ -110,7 +110,7 @@ class QuizController extends Controller
         $quiz->active = !$quiz->active;
         $quiz->save();
 
-        return Response::make('', '200');
+        return Response::make('');
     }
 
     /**
@@ -118,7 +118,7 @@ class QuizController extends Controller
      *
      * @param  \App\Quiz  $quiz
      * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|void
      */
     public function deleteQuestion(Quiz $quiz, Question $question)
     {
@@ -130,7 +130,7 @@ class QuizController extends Controller
      *
      * @param  \App\Quiz  $quiz
      * @param  \App\Question $question
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|void
      */
     public function addQuestion(Quiz $quiz, Question $question)
     {

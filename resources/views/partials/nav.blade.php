@@ -9,9 +9,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                @roles(['admin', 'editor', 'moderator'])
+                @can('use-dashboard')
                     <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
-                @endroles 
+                @endcan
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

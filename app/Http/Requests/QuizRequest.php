@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/** @psalm-suppress PropertyNotSetInConstructor */
 class QuizRequest extends FormRequest
 {
     /**

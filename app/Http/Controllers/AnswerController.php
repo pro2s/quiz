@@ -18,14 +18,14 @@ class AnswerController extends Controller
         $answer->active = !$answer->active;
         $answer->save();
 
-        return Response::make('', '200');
+        return Response::make('');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Answer $answer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|void
      */
     public function destroy(Answer $answer)
     {

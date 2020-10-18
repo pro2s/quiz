@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
+/** @psalm-suppress PropertyNotSetInConstructor */
 class DatabaseCreate extends Command
 {
     /**
@@ -24,7 +25,7 @@ class DatabaseCreate extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
     public function handle()
     {

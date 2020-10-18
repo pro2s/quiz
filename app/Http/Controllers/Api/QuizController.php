@@ -2,52 +2,51 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Contracts\Quiz as QuizContract;
 use App\Http\Controllers\Controller;
 use App\Question;
 use App\Quiz;
+use Illuminate\Database\Eloquent\Collection;
 
 class QuizController extends Controller
 {
-    public function index()
+    /**
+     * @var QuizContract
+     */
+    private $quizes;
+
+    public function __construct(QuizContract $quizes)
+    {
+        $this->quizes = $quizes;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function index(): Collection
     {
         return Quiz::where('active', true)->get();
     }
 
-    public function show($slug)
+    /**
+     * @param string $slug
+     */
+    public function show($slug): ?Quiz
     {
-        $quiz = Quiz::where('slug', $slug)
-            ->where('active', true)
-            ->with(['questions' => function ($query) {
-                return $query->where('active', true)->with('answers:id,question_id,answer');
-            }])
-            ->first();
-
-        // TODO: get current question for user
-
-        return $quiz->makeHidden('questions');
+        return $this->quizes->getQuizBySlug($slug)->makeHidden('questions');
     }
 
-    public function next($slug, $questionSlug)
+    /**
+     * @param string $quizSlug
+     * @param string $questionSlug
+     *
+     * @return (Question|bool|null)[]
+     *
+     * @psalm-return array{question: Question|null, finished: bool}
+     */
+    public function next($quizSlug, $questionSlug): array
     {
-        $question = Question::where('slug', $questionSlug)->first();
-
-        $quiz = Quiz::where('slug', $slug)
-            ->where('active', true)
-            ->with(['questions' => function ($query) {
-                return $query->where('active', true)->with('answers:id,question_id,answer');
-            }])
-            ->first();
-
-        $next = false;
-        $nextQuestion = null;
-
-        foreach ($quiz->questions as $question) {
-            if ($next) {
-                $nextQuestion = $question;
-                break;
-            }
-            $next = $question->slug === $questionSlug;
-        }
+        $nextQuestion = $this->quizes->getNextQuestionBySlugs($quizSlug, $questionSlug);
 
         return ['question' => $nextQuestion, 'finished' => $nextQuestion === null];
     }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -28,7 +29,12 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-    public function roles()
+    /**
+     * @return BelongsToMany
+     *
+     * @psalm-return BelongsToMany<Role>
+     */
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }
@@ -42,7 +48,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function authorizeRoles($roles): bool
     {
-        $result = (is_array($roles) && $this->hasAnyRole($roles)) || $this->hasRole($roles);
+        $result = $this->hasAnyRole($roles) || $this->hasRole($roles);
 
         if (!$result) {
             abort(401, 'This action is unauthorized.');
@@ -53,23 +59,36 @@ class User extends Authenticatable implements JWTSubject
 
     /**
      * Check multiple roles.
-     * @param array $roles
+     *
+     * @param string|array $roles
+     *
+     * @return bool
      */
-    public function hasAnyRole($roles)
+    public function hasAnyRole($roles): bool
     {
-        return null !== $this->roles()->whereIn('name', $roles)->first();
+        return \is_array($roles)
+            && $this->roles()->whereIn('name', $roles)->count() > 0;
     }
 
     /**
      * Check one role.
-     * @param string $role
+     *
+     * @param string|array $role
+     *
+     * @return bool
      */
-    public function hasRole($role)
+    public function hasRole($role): bool
     {
-        return null !== $this->roles()->where('name', $role)->first();
+        return \is_string($role)
+            && $this->roles()->where('name', $role)->count() > 0;
     }
 
-    public function quizzes()
+    /**
+     * @return BelongsToMany
+     *
+     * @psalm-return BelongsToMany<Quiz>
+     */
+    public function quizzes(): BelongsToMany
     {
         return $this->belongsToMany(Quiz::class)->using(UserQuiz::class);
     }
