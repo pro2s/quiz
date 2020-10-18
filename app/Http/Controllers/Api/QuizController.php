@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Question;
 use App\Quiz;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Query\Builder;
 
 class QuizController extends Controller
 {

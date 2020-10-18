@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Quiz;
-use App\Question;
-use Illuminate\Database\Query\Builder;
 use App\Exceptions\QuizNotFoundException;
+use App\Question;
+use App\Quiz;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class QuizRepository implements \App\Contracts\Quiz
 {
@@ -19,7 +19,7 @@ class QuizRepository implements \App\Contracts\Quiz
     {
         $quiz = Quiz::where('slug', $slug)
         ->where('active', true)
-        ->with(['questions' => function (Builder $query): Builder {
+        ->with(['questions' => function (BelongsToMany $query): BelongsToMany {
             return $query->where('active', true)->with('answers:id,question_id,answer');
         }])
         ->first();
