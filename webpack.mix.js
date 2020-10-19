@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 /*
  |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ switch(process.env.NODE_ENV) {
         })
         .sourceMaps();
     break;
-    case 'stats': 
+    case 'stats':
         mix.webpackConfig({
             plugins: [
                 new BundleAnalyzerPlugin(),
