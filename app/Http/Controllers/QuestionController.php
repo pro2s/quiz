@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
 use App\Http\Requests\QuestionRequest;
 use App\Question;
 use Illuminate\Database\Eloquent\Collection;

@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 /** @psalm-suppress PropertyNotSetInConstructor */
 class AnswerRequest extends FormRequest
@@ -11,7 +10,7 @@ class AnswerRequest extends FormRequest
     use BooleanTrait;
 
     /**
-     * @var string[] $booleans
+     * @var string[]
      */
     protected $booleans = ['correct', 'active'];
 
@@ -24,7 +23,6 @@ class AnswerRequest extends FormRequest
     {
         return true;
     }
-
 
     protected function prepareForValidation()
     {

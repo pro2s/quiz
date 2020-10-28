@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Http\Requests\AnswerRequest;
 use App\Question;
 use Illuminate\Http\Request;
-use App\Http\Requests\AnswerRequest;
 
 class QuestionAnswerController extends Controller
 {

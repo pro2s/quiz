@@ -7,7 +7,7 @@ namespace App\Http\Requests;
  */
 trait BooleanTrait
 {
-     /**
+    /**
      * Extend the FormRequest prepareForValidation() method to
      * add boolean attributes specified to the request data, setting
      * their value to the presence of the data in the original request.

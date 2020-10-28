@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Answer extends Model
 {
     protected $fillable = [
-        'answer', 'image', 'active', 'correct'
+        'answer', 'image', 'active', 'correct',
     ];
 
     /**
