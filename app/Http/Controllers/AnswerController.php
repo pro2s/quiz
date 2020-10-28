@@ -25,10 +25,10 @@ class AnswerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Answer $answer
-     * @return \Illuminate\Http\Response|void
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Answer $answer)
     {
-        //
+        $answer->delete();
     }
 }
