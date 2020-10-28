@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\User;
 
 class Roles
 {
@@ -18,7 +19,9 @@ class Roles
     public function handle($request, Closure $next, string $roles)
     {
         $allowedRoles = explode(',', $roles);
-        if ($request->user()->hasAnyRole($allowedRoles)) {
+        /** @var User */
+        $user = $request->user();
+        if ($user->hasAnyRole($allowedRoles)) {
             return $next($request);
         }
         $message = 'This action is unauthorized.';

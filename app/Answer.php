@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Answer extends Model
 {
+    protected $fillable = [
+        'answer', 'image', 'active', 'correct'
+    ];
+
     /**
      * @return BelongsToMany
      *

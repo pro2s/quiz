@@ -23,13 +23,13 @@
         </td>
         <td class="text-nowrap" slot="actions" slot-scope="{ deleteItem, toggleItem, isActive }">
             <div class="btn-group" role="group" aria-label="Actions">
-                <a class="btn btn-outline-secondary" href="{{ route('questions.answer.edit', [$id, $answer->id]) }}">
+                <a class="btn btn-outline-secondary" href="{{ route('questions.answers.edit', [$id, $answer->id]) }}">
                     @icon("edit-3")
                 </a>
                 <button class="btn btn-outline-secondary" @click="deleteItem('{{ route('answers.destroy', $answer->id)  }}')">
                     @icon("trash")
                 </button>
-                <a class="btn btn-outline-secondary" href="{{ route('questions.answer.correct', [$id, $answer->id]) }}">
+                <a class="btn btn-outline-secondary" href="{{ route('questions.answers.correct', [$id, $answer->id]) }}">
                     @icon($answer->correct ? 'square' : 'check-square')
                 </a>
                 <button class="btn btn-outline-secondary" url="{{ route('answers.toggle', $answer->id) }}" is="active-button" @action="toggleItem" :active="isActive">
@@ -41,6 +41,6 @@
     @endforeach
     </tbody>
 </table>
-<a class="btn btn-primary" href="{{ route('questions.answer.create', ['question' => $id]) }}">
+<a class="btn btn-primary" href="{{ route('questions.answers.create', ['question' => $id]) }}">
     @icon("plus") Add answer
 </a>

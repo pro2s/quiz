@@ -59,6 +59,9 @@ class Quiz extends Model
 
     public function getQuestionAttribute(): ?Question
     {
-        return $this->attributes['question'] = $this->questions[0] ?? null;
+        $question = $this->questions()->first();
+        $this->attributes['question'] = $question;
+
+        return $question;
     }
 }

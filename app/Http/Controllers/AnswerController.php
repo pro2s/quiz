@@ -30,5 +30,7 @@ class AnswerController extends Controller
     public function destroy(Answer $answer)
     {
         $answer->delete();
+
+        return Response::make('');
     }
 }

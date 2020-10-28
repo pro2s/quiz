@@ -8,10 +8,10 @@
 @stop
 @section('content')
 @if( $answer->exists )
-<form method="post" action="{{ route('questions.answer.update', [$question->id, $answer->id]) }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('questions.answers.update', [$question->id, $answer->id]) }}" enctype="multipart/form-data">
     @method('PUT')
 @else
-<form method="post" action="{{ route('questions.answer.store', $question->id) }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('questions.answers.store', $question->id) }}" enctype="multipart/form-data">
 @endif
     @csrf
     <div class="form-group">

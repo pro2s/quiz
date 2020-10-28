@@ -35,10 +35,10 @@ class QuizRepository implements \App\Contracts\Quiz
     {
         $next = false;
         $nextQuestion = null;
-
         $quiz = $this->getQuizBySlug($quizSlug);
 
-        foreach ($quiz->questions as $question) {
+        /** @var Question $question */
+        foreach ($quiz->questions()->get() as $question) {
             if ($next) {
                 $nextQuestion = $question;
                 break;

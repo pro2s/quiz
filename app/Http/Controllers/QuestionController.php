@@ -123,78 +123,13 @@ class QuestionController extends Controller
     {
         $activeQuestions = Question::where('active', true);
 
-        $text = $request->get('text', false);
+        /** @var string|null $text */
+        $text = $request->get('text', null);
         if ($text) {
             $activeQuestions->where('title', 'like', '%' . $text . '%');
         }
 
         return $activeQuestions->get();
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Question  $question
-     * @param Answer  $answer
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function correct(Question $question, Answer $answer)
-    {
-        $answer->correct = !$answer->correct;
-        $answer->save();
-
-        return $this->redirectToEdit($question);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Question $question
-     * @param Answer $answer
-     * @return \Illuminate\View\View
-     */
-    public function editAnswer(Question $question, Answer $answer)
-    {
-        return view('admin.questions.edit_answer', compact(['question', 'answer']));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @param Question $question
-     * @return \Illuminate\View\View
-     */
-    public function createAnswer(Question $question)
-    {
-        $answer = new Answer();
-        $answer->question()->associate($question);
-
-        return view('admin.questions.edit_answer', compact(['question', 'answer']));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request  $request
-     * @param Question $question
-     * @param Answer $answer
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function updateAnswer(Request $request, Question $question, Answer $answer)
-    {
-        return redirect()->route('questions.answer.edit', [$question, $answer]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request  $request
-     * @param Question $question
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function storeAnswer(Request $request, Question $question)
-    {
-        return $this->redirectToEdit($question);
     }
 
     /**
