@@ -1,5 +1,5 @@
-<template> 
-    <b-container class="mt-5"> 
+<template>
+    <b-container class="mt-5">
         <b-alert :show="apiError" variant="danger">Error retriving the quiz</b-alert>
         <b-row  class="justify-content-md-center">
             <b-col cols="8">
@@ -8,14 +8,14 @@
                 </transition>
             </b-col>
         </b-row>
-    </b-container> 
-</template> 
- 
-<script> 
-    import QuizView from './QuizView.vue'; 
-    import QuizResult from './QuizResult.vue'; 
+    </b-container>
+</template>
+
+<script>
+    import QuizView from './QuizView.vue';
+    import QuizResult from './QuizResult.vue';
     import { mapActions, mapGetters } from 'vuex'
-    export default { 
+    export default {
         computed: {
             quizView() {
                 return this.quiz.finished ? QuizResult : QuizView;
@@ -23,11 +23,11 @@
             quiz() {
                 return this.getQuizBySlug(this.$route.params.slug);
             },
-            ...mapGetters([ 
-            'apiError',
-            'getQuizBySlug'
+            ...mapGetters([
+                'apiError',
+                'getQuizBySlug'
             ])
-        }, 
+        },
         created () {
             // загружаем данные, когда представление создано
             // и данные реактивно отслеживаются
@@ -36,7 +36,7 @@
         watch: {
             // при изменениях маршрута запрашиваем данные снова
             '$route': 'update'
-        }, 
+        },
         methods: {
             ...mapActions([
                 'getQuiz'
@@ -45,8 +45,8 @@
                 this.getQuiz(this.$route.params.slug)
             }
         }
-    } 
-</script> 
+    }
+</script>
 
 <style scoped>
     .component-fade-enter-active, .component-fade-leave-active {

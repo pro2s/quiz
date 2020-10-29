@@ -30,6 +30,6 @@ class DatabaseCreate extends Command
     public function handle()
     {
         $schemaName = DB::getDatabaseName();
-        DB::getConnection()->statement('CREATE DATABASE :schema', ['schema' => $schemaName]);
+        DB::statement('CREATE DATABASE :schema', ['schema' => $schemaName]);
     }
 }

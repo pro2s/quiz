@@ -20,6 +20,7 @@ class AnswerController extends Controller
      */
     public function send(Request $request, $quiz, $question)
     {
+        /** @var string|null $id */
         $id = $request->input('id', null);
         $answer = Answer::where('id', $id)
                 ->where('active', true)

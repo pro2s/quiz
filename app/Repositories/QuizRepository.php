@@ -38,7 +38,7 @@ class QuizRepository implements \App\Contracts\Quiz
         $quiz = $this->getQuizBySlug($quizSlug);
 
         /** @var Question $question */
-        foreach ($quiz->questions()->get() as $question) {
+        foreach ($quiz->questions as $question) {
             if ($next) {
                 $nextQuestion = $question;
                 break;

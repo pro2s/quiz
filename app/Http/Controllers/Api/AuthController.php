@@ -3,19 +3,26 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\JWTGuard;
 
 class AuthController extends Controller
 {
     /**
+     * @var JWTGuard
+     */
+    private $guard;
+
+    /**
      * Create a new AuthController instance.
-     *
+     * @psalm-suppress PropertyTypeCoercion
      * @return void
      */
-    public function __construct()
+    public function __construct(AuthManager $auth)
     {
         $this->middleware('auth:api', ['except' => ['login']]);
+        $this->guard = $auth->guard('api');
     }
 
     /**
@@ -24,11 +31,16 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function login()
-    {
+    {   /** @var array $credentials */
         $credentials = request(['email', 'password']);
+        $token = $this->guard->attempt($credentials);
 
-        if (!$token = auth('api')->attempt($credentials)) {
+        if ($token === false) {
             return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        if ($token === true) {
+            return response()->json(['success' => 'Authorized'], 200);
         }
 
         return $this->respondWithToken($token);
@@ -41,7 +53,7 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return response()->json(['data' => auth('api')->user()]);
+        return response()->json(['data' => $this->guard->user()]);
     }
 
     /**
@@ -51,7 +63,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth('api')->logout();
+        $this->guard->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -63,7 +75,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth('api')->refresh());
+        return $this->respondWithToken($this->guard->refresh());
     }
 
     /**
@@ -73,12 +85,14 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken(string $token)
     {
+        /** @var \Tymon\JWTAuth\Factory $factory */
+        $factory = $this->guard->factory();
         $data = [
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60,
+            'expires_in' => $factory->getTTL() * 60,
         ];
 
         return response()->json($data)

@@ -27,9 +27,11 @@ import {
     AlertPlugin,
     CollapsePlugin,
     NavbarPlugin,
-    ListGroupPlugin
+    ListGroupPlugin,
+    FormGroupPlugin
 } from 'bootstrap-vue';
 
+Vue.use(FormGroupPlugin);
 Vue.use(ButtonPlugin);
 Vue.use(FormPlugin);
 Vue.use(LayoutPlugin);
