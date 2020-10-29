@@ -8,7 +8,6 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Router from 'vue-router'
-import BootstrapVue from 'bootstrap-vue'
 import VueAuth from '@websanova/vue-auth'
 import VueAuthAxios from '@websanova/vue-auth/drivers/http/axios.1.x.js'
 import VueAuthBearer from '@websanova/vue-auth/drivers/auth/bearer.js'
@@ -17,15 +16,39 @@ import * as ModalDialogs from 'vue-modal-dialogs';
 import Notifications from 'vue-notification';
 import vueTopprogress from 'vue-top-progress';
 
+import {
+    LayoutPlugin,
+    FormPlugin,
+    CardPlugin,
+    DropdownPlugin,
+    FormInputPlugin,
+    NavPlugin,
+    ButtonPlugin,
+    AlertPlugin,
+    CollapsePlugin,
+    NavbarPlugin,
+    ListGroupPlugin
+} from 'bootstrap-vue';
+
+Vue.use(ButtonPlugin);
+Vue.use(FormPlugin);
+Vue.use(LayoutPlugin);
+Vue.use(CardPlugin);
+Vue.use(DropdownPlugin);
+Vue.use(FormInputPlugin);
+Vue.use(NavPlugin);
+Vue.use(AlertPlugin);
+Vue.use(CollapsePlugin);
+Vue.use(NavbarPlugin);
+Vue.use(ListGroupPlugin);
 
 Vue.use(Router);
 Vue.use(VueAxios, axios)
-Vue.use(BootstrapVue);
 Vue.use(ModalDialogs);
 Vue.use(Notifications);
 Vue.use(vueTopprogress);
 
-import Navigation from '@/components/Navigation.vue';
+import Navigation from './components/Navigation.vue';
 import router from './router'
 import store from './store'
 
